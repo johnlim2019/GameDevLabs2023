@@ -143,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
     if (other.gameObject.CompareTag("Enemies") && alive)
     {
       // Debug.Log("Collided with goomba!");
+      marioAnimator.SetTrigger("onDeath");
       GameOverScene();
     }
   }

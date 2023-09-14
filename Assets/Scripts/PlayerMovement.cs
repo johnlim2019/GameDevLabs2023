@@ -102,7 +102,12 @@ public class PlayerMovement : MonoBehaviour
 
   void OnCollisionEnter2D(Collision2D col)
   {
-    if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("Obstacles")) && !onGroundState)
+    ContactPoint2D contact = col.contacts[0];
+    float otherY = (float)(contact.collider.transform.position.y + contact.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2 - 0.1);
+    float playerY = (float)(contact.otherCollider.transform.position.y - contact.otherCollider.GetComponent<SpriteRenderer>().bounds.size.y / 2 + 0.1);
+    // Debug.Log("otherY " + otherY);
+    // Debug.Log("playerY " + playerY);
+    if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || (col.gameObject.CompareTag("Obstacles") && playerY > otherY)) && !onGroundState)
     {
       onGroundState = true;
       // update animator state

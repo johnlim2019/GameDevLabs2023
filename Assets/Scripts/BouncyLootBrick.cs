@@ -9,7 +9,7 @@ public class BouncyLootBrick : MonoBehaviour
   public GameObject mario;
   private Rigidbody2D marioBody;
   public AudioSource coinAudio;
-  public bool soundComplete = false;
+  public bool BrickUsed = false;
   public Animator coinAnimator;
 
 
@@ -28,13 +28,13 @@ public class BouncyLootBrick : MonoBehaviour
     // play jump sound
     coinAnimator.SetTrigger("ActivateCoin");
     coinAudio.PlayOneShot(coinAudio.clip);
-    soundComplete = true;
+    BrickUsed = true;
   }
 
   void OnCollisionEnter2D(Collision2D col)
   {
     // when collide from bottom trigger animation.
-    if (col.gameObject.CompareTag("Player") && marioBody.position.y < boxBody.position.y && !soundComplete)
+    if (col.gameObject.CompareTag("Player") && marioBody.position.y < boxBody.position.y && !BrickUsed)
     {
       // play sound 
       try

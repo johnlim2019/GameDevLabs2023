@@ -8,7 +8,7 @@ public class BouncyLootBox : MonoBehaviour
   public SpringJoint2D springJoint;
   public GameObject mario;
   private Rigidbody2D marioBody;
-  public bool activated;
+  public bool BoxUsed;
   public Animator animator;
   public AudioSource coinAudio;
   public bool soundComplete = false;
@@ -50,9 +50,9 @@ public class BouncyLootBox : MonoBehaviour
   {
     if (animator.GetCurrentAnimatorStateInfo(0).IsName("Done"))
     {
-      activated = true;
+      BoxUsed = true;
     }
-    if (marioBody.position.y > boxBody.position.y || activated)
+    if (marioBody.position.y > boxBody.position.y || BoxUsed)
       boxBody.bodyType = RigidbodyType2D.Static;
     else
       boxBody.bodyType = RigidbodyType2D.Dynamic;

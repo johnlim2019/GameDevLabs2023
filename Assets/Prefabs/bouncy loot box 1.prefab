@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4611485936482849125}
   m_Layer: 7
   m_Name: bouncy loot box 1
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -365,7 +365,7 @@ MonoBehaviour:
   boxBody: {fileID: 2753862688582175282}
   springJoint: {fileID: 0}
   mario: {fileID: 0}
-  activated: 0
+  BoxUsed: 0
   animator: {fileID: 8512505674325348351}
   coinAudio: {fileID: 0}
   soundComplete: 0

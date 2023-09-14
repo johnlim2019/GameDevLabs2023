@@ -6,6 +6,7 @@ using UnityEditor.Build.Content;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
   private SpriteRenderer marioSprite;
   public TextMeshProUGUI scoreText;
   public TextMeshProUGUI endScoreText;
+  public CanvasGroup HUD;
+  public Button restartTopRight;
   public GameObject enemies;
   public CanvasGroup endgame;
   public Animator marioAnimator;
@@ -50,8 +53,9 @@ public class PlayerMovement : MonoBehaviour
   void GameOverScene()
   {
     PlayDeathImpulse();
+    HUD.alpha = 0.0f;
+    restartTopRight.interactable = false;
     endgame.alpha = 1.0f;
-    scoreText.alpha = 0.0f;
     endgame.interactable = true; // enable interaction
     endgame.blocksRaycasts = true; // do not block raycasts
     marioAnimator.Play("Mario Death");
@@ -69,7 +73,6 @@ public class PlayerMovement : MonoBehaviour
     marioBody.constraints = RigidbodyConstraints2D.FreezeRotation;
     endgame.alpha = 0f;
     marioAnimator.SetBool("onGround", onGroundState);
-
   }
 
   // Update is called once per frame
@@ -166,17 +169,18 @@ public class PlayerMovement : MonoBehaviour
     marioSprite.flipX = false;
     marioAnimator.SetTrigger("gameRestart");
     gameCamera.position = new Vector3(0, 1.05f, -10);
-
     alive = true;
     // reset score
-
     scoreText.text = "Score: 0";
     endScoreText.text = "Score: 0";
     // close the endgame canvas
     endgame.alpha = 0f;
-    scoreText.alpha = 1.0f;
     endgame.interactable = false; // disable interaction
     endgame.blocksRaycasts = false; // do not block raycasts
+    // Set up HUD
+    HUD.alpha = 1.0f;
+    restartTopRight.interactable = true;
+
     // reset Goomba
     foreach (Transform eachChild in enemies.transform)
     {

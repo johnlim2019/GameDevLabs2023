@@ -84,4 +84,9 @@ public class JumpOverGoomba : MonoBehaviour
     Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
   }
 
+  public void Restart()
+  {
+    score = 0;
+  }
+
 }

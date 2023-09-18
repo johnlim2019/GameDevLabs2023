@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
   public float deathImpulse = 15;
   private bool onGroundState = true;
   private bool faceRightState = true;
+  private bool moving = false;
+  private bool jumpedState = false;
+  private JumpOverGoomba scoreScript;
   private Rigidbody2D marioBody;
   private SpriteRenderer marioSprite;
   public TextMeshProUGUI scoreText;
@@ -38,12 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
   public AudioSource marioAudio;
 
-  void PlayJumpSound()
-  {
-    // play jump sound
-    // Debug.Log("play jump audio");
-    marioAudio.PlayOneShot(marioAudio.clip);
-  }
 
   void PlayDeathImpulse()
   {
@@ -68,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
   {
     // Set to be 30 FPS
     Application.targetFrameRate = 30;
+    scoreScript = GetComponent<JumpOverGoomba>();
     marioBody = GetComponent<Rigidbody2D>();
     marioSprite = GetComponent<SpriteRenderer>();
     marioBody.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -80,21 +78,6 @@ public class PlayerMovement : MonoBehaviour
   {
     if (alive)
     {
-      if (Input.GetKeyDown(leftKey) && faceRightState)
-      {
-        faceRightState = false;
-        marioSprite.flipX = true;
-        if (marioBody.velocity.x > 0.10f)
-          marioAnimator.SetTrigger("onSkid");
-      }
-
-      if (Input.GetKeyDown(rightKey) && !faceRightState)
-      {
-        faceRightState = true;
-        marioSprite.flipX = false;
-        if (marioBody.velocity.x < -0.01f)
-          marioAnimator.SetTrigger("onSkid");
-      }
       marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
     }
   }
@@ -118,32 +101,85 @@ public class PlayerMovement : MonoBehaviour
   // FixedUpdate is called 50 times a second
   void FixedUpdate()
   {
-    if (alive)
+    if (alive && moving)
     {
-      float moveHorizontal = Input.GetAxisRaw("Horizontal");
-      if (Mathf.Abs(moveHorizontal) > 0)
-      {
-        Vector2 movement = new Vector2(moveHorizontal, 0);
-        // check if it doesn't go beyond maxSpeed
-        if (marioBody.velocity.magnitude < maxSpeed)
-          marioBody.AddForce(movement * speed);
-      }
+      Move(faceRightState == true ? 1 : -1);
+    }
+  }
 
-      // stop
-      if (Input.GetKeyUp(leftKey) || Input.GetKeyUp(rightKey))
-      {
-        // stop
-        marioBody.velocity = Vector2.zero;
-      }
+  void PlayJumpSound()
+  {
+    // play jump sound
+    // Debug.Log("play jump audio");
+    marioAudio.PlayOneShot(marioAudio.clip);
+  }
 
-      if (Input.GetKeyDown(jumpKey) && onGroundState)
-      {
-        marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
-        onGroundState = false;
-        marioAnimator.SetBool("onGround", onGroundState);
-      }
+  public void Jump()
+  {
+    if (alive && onGroundState)
+    {
+      // jump
+      PlayJumpSound();
+      marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+      onGroundState = false;
+      jumpedState = true;
+      // update animator state
+      marioAnimator.SetBool("onGround", onGroundState);
+
+    }
+  }
+
+  public void JumpHold()
+  {
+    if (alive && jumpedState)
+    {
+      // jump higher
+      marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);
+      jumpedState = false;
+
+    }
+  }
+
+  void Move(int value)
+  {
+
+    Vector2 movement = new Vector2(value, 0);
+    // check if it doesn't go beyond maxSpeed
+    if (marioBody.velocity.magnitude < maxSpeed)
+      marioBody.AddForce(movement * speed);
+  }
+
+  public void MoveCheck(int value)
+  {
+    if (value == 0)
+    {
+      moving = false;
+    }
+    else
+    {
+      FlipMarioSprite(value);
+      moving = true;
+      Move(value);
+    }
+  }
+
+  void FlipMarioSprite(int value)
+  {
+    if (value == -1 && faceRightState)
+    {
+      faceRightState = false;
+      marioSprite.flipX = true;
+      if (marioBody.velocity.x > 0.10f)
+        marioAnimator.SetTrigger("onSkid");
     }
 
+    if (value == 1 && !faceRightState)
+    {
+      faceRightState = true;
+      marioSprite.flipX = false;
+      if (marioBody.velocity.x < -0.01f)
+        marioAnimator.SetTrigger("onSkid");
+    }
   }
 
   void OnTriggerEnter2D(Collider2D other)
@@ -178,6 +214,7 @@ public class PlayerMovement : MonoBehaviour
     // reset score
     scoreText.text = "Score: 0";
     endScoreText.text = "Score: 0";
+    scoreScript.Restart();
     // close the endgame canvas
     endgame.alpha = 0f;
     endgame.interactable = false; // disable interaction

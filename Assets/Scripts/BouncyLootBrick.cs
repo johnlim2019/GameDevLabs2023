@@ -11,6 +11,7 @@ public class BouncyLootBrick : MonoBehaviour
   public AudioSource coinAudio;
   public bool BrickUsed = false;
   public Animator coinAnimator;
+  public GameManager gameManager;
 
 
   // Start is called before the first frame update
@@ -18,17 +19,20 @@ public class BouncyLootBrick : MonoBehaviour
   {
     boxBody = GetComponent<Rigidbody2D>();
     springJoint = GetComponent<SpringJoint2D>();
+    mario = GameObject.FindGameObjectWithTag("Player");
     marioBody = mario.GetComponent<Rigidbody2D>();
     boxBody.bodyType = RigidbodyType2D.Static;
     coinAudio = GetComponent<AudioSource>();
+    gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
   }
 
   void CoinAnimationSound()
   {
     // play jump sound
-    coinAnimator.SetTrigger("ActivateCoin");
-    coinAudio.PlayOneShot(coinAudio.clip);
     BrickUsed = true;
+    coinAnimator.SetBool("ActivateCoin", BrickUsed);
+    coinAudio.PlayOneShot(coinAudio.clip);
+    gameManager.ScoreIncrement();
   }
 
   void OnCollisionEnter2D(Collision2D col)
@@ -37,14 +41,7 @@ public class BouncyLootBrick : MonoBehaviour
     if (col.gameObject.CompareTag("Player") && marioBody.position.y < boxBody.position.y && !BrickUsed)
     {
       // play sound 
-      try
-      {
-        CoinAnimationSound();
-      }
-      catch
-      {
-        return;
-      }
+      CoinAnimationSound();
     }
   }
   // called 50 times a second
@@ -61,5 +58,12 @@ public class BouncyLootBrick : MonoBehaviour
   void Update()
   {
     // Debug.Log("Activated loot box " + activated);
+  }
+
+  public void Reset()
+  {
+    BrickUsed = false;
+    coinAnimator.SetBool("ActivateCoin", BrickUsed);
+    Debug.Log("BrickUsed " + BrickUsed);
   }
 }

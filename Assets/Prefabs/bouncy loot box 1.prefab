@@ -363,13 +363,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxBody: {fileID: 2753862688582175282}
-  springJoint: {fileID: 0}
-  mario: {fileID: 0}
+  springJoint: {fileID: 4201920455813827192}
+  mario: {fileID: 6766531116205108024, guid: 83564cf15a5dc4ba69a374e808b79b93, type: 3}
   BoxUsed: 0
   animator: {fileID: 8512505674325348351}
-  coinAudio: {fileID: 0}
+  coinAudio: {fileID: 8565663593437407170}
   soundComplete: 0
   coinAnimator: {fileID: 2098452569052243280}
+  gameManager: {fileID: 0}
 --- !u!95 &8512505674325348351
 Animator:
   serializedVersion: 5

@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 1540748960103739139}
   - component: {fileID: 5802244096802857559}
   m_Layer: 7
-  m_Name: loot brick
+  m_Name: bouncy loot brick
   m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,8 +180,8 @@ GameObject:
   - component: {fileID: 2441862503438683555}
   - component: {fileID: 2955639925095801391}
   - component: {fileID: 6927827752224666970}
-  - component: {fileID: 4051110797964852161}
   - component: {fileID: 8634818344602751981}
+  - component: {fileID: 2362524557209046014}
   m_Layer: 7
   m_Name: spring-loot-brick
   m_TagString: Obstacles
@@ -349,7 +349,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!82 &4051110797964852161
+--- !u!114 &8634818344602751981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225503174866222739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe31204ba634d491bbdd813da2a26ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxBody: {fileID: 2441862503438683555}
+  springJoint: {fileID: 2955639925095801391}
+  mario: {fileID: 0}
+  coinAudio: {fileID: 2362524557209046014}
+  BrickUsed: 0
+  coinAnimator: {fileID: 3232407073520300488}
+  gameManager: {fileID: 0}
+--- !u!82 &2362524557209046014
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,7 +381,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: d885ffc842af744d89f7d595ffcc176a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: -2.21
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -445,21 +464,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8634818344602751981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6225503174866222739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe31204ba634d491bbdd813da2a26ceb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxBody: {fileID: 2441862503438683555}
-  springJoint: {fileID: 2955639925095801391}
-  mario: {fileID: 0}
-  coinAudio: {fileID: 4051110797964852161}
-  soundComplete: 0
-  coinAnimator: {fileID: 3232407073520300488}

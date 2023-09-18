@@ -6,13 +6,13 @@ public class EnemyMovement : MonoBehaviour
 {
 
   private float originalX;
-  private float maxOffset = 5.0f;
+  private float maxOffset = 3.0f;
   private float enemyPatroltime = 2.0f;
   private int moveRight = -1;
   private Vector2 velocity;
 
   private Rigidbody2D enemyBody;
-  public Vector3 startPosition = new Vector3(7f, -3.862f, 0.0f);
+  public Vector3 startPosition;
 
   void Start()
   {
@@ -47,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
   }
   void OnTriggerEnter2D(Collider2D other)
   {
-    // Debug.Log(other.gameObject.name);
+    Debug.Log(other.gameObject.name);
   }
 
 }

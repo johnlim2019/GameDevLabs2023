@@ -2,35 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class JumpOverGoomba : MonoBehaviour
 {
   public Transform enemyLocation;
-  public TextMeshProUGUI scoreText;
-
-  public TextMeshProUGUI endScoreText;
-
-
   private bool onGroundState;
-
-  [System.NonSerialized]
-  public int score = 0; // we don't want this to show up in the inspector
-
   private bool countScoreState = false;
   public Vector3 boxSize = new Vector3();
   public float maxDistance;
   public LayerMask layerMask;
-  // Start is called before the first frame update
+  public GameManager gameManager;
+
   void Start()
   {
-
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-
-
+    gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
   }
 
   void FixedUpdate()
@@ -48,9 +34,7 @@ public class JumpOverGoomba : MonoBehaviour
       if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
       {
         countScoreState = false;
-        score++;
-        scoreText.text = "Score: " + score.ToString();
-        endScoreText.text = "Score: " + score.ToString();
+        gameManager.ScoreIncrement();
         // Debug.Log(score);
       }
     }
@@ -76,17 +60,10 @@ public class JumpOverGoomba : MonoBehaviour
     }
   }
 
-
   // helper
   void OnDrawGizmos()
   {
     Gizmos.color = Color.yellow;
     Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
   }
-
-  public void Restart()
-  {
-    score = 0;
-  }
-
 }

@@ -15,6 +15,7 @@ public class BouncyBrick : MonoBehaviour
   {
     boxBody = GetComponent<Rigidbody2D>();
     springJoint = GetComponent<SpringJoint2D>();
+    mario = GameObject.FindGameObjectWithTag("Player");
     marioBody = mario.GetComponent<Rigidbody2D>();
     boxBody.bodyType = RigidbodyType2D.Static;
   }

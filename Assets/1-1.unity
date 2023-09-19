@@ -1297,6 +1297,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2048534966}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: GameOverScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   GameResetEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1382,6 +1394,21 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
         m_MethodName: ScoreIncrement
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PlayerStompEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2048534966}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: PlayDeathImpulse
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3019,6 +3046,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!95 &1984748818
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984748803}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98f246c9a2c884dba8a7f63282036d19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2048534963
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,6 +3179,7 @@ MonoBehaviour:
   marioAnimator: {fileID: 0}
   marioAudio: {fileID: 2048534971}
   gameManager: {fileID: 0}
+  MarioCollider: {fileID: 0}
 --- !u!50 &2048534967
 Rigidbody2D:
   serializedVersion: 4
@@ -3218,10 +3267,14 @@ MonoBehaviour:
   enemyLocation: {fileID: 1984748804}
   boxSize: {x: 0.5, y: 0.1, z: 0}
   maxDistance: 0.34
-  layerMask:
+  groundMask:
     serializedVersion: 2
     m_Bits: 8
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
   gameManager: {fileID: 650533803}
+  MarioCollider: {fileID: 0}
 --- !u!95 &2048534970
 Animator:
   serializedVersion: 5
@@ -3397,7 +3450,7 @@ MonoBehaviour:
     m_ActionId: 7157da93-412b-44ca-b0fa-630ff2ec1d48
     m_ActionName: gameplay/point[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard+mouse
   m_DefaultActionMap: gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -3950,6 +4003,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9184505789247706561, guid: 7fde0bf4c832d4680811f95762f3348e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1984748808}
+    - targetCorrespondingSourceObject: {fileID: 9184505789247706561, guid: 7fde0bf4c832d4680811f95762f3348e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984748818}
   m_SourcePrefab: {fileID: 100100000, guid: 7fde0bf4c832d4680811f95762f3348e, type: 3}
 --- !u!1001 &5701032938796268243
 PrefabInstance:

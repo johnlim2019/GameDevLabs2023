@@ -1,26 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mail;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
 
+  private bool alive = true;
   private float originalX;
   private float maxOffset = 1.0f;
   private float enemyPatroltime = 0.5f;
   private int moveRight = -1;
   private Vector2 velocity;
-
+  private Animator animator;
   private Rigidbody2D enemyBody;
   public Vector3 startPosition;
+  public BoxCollider2D boxCollider;
 
+  public AudioSource audioSource;
   void Start()
   {
+    alive = true;
+    audioSource = GetComponent<AudioSource>();
     enemyBody = GetComponent<Rigidbody2D>();
+    animator = GetComponent<Animator>();
+    boxCollider = GetComponent<BoxCollider2D>();
     enemyBody.constraints = RigidbodyConstraints2D.FreezeRotation;
     // get the starting position
     originalX = transform.position.x;
     ComputeVelocity();
+    animator.SetBool("Alive", alive);
   }
   void ComputeVelocity()
   {
@@ -33,20 +42,38 @@ public class EnemyMovement : MonoBehaviour
 
   void Update()
   {
-    if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
-    {// move goomba
-      Movegoomba();
-    }
-    else
+    if (alive)
     {
-      // change direction
-      moveRight *= -1;
-      ComputeVelocity();
-      Movegoomba();
+      if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
+      {// move goomba
+        Movegoomba();
+      }
+      else
+      {
+        // change direction
+        moveRight *= -1;
+        ComputeVelocity();
+        Movegoomba();
+      }
     }
   }
   public void RestartGame()
   {
     enemyBody.transform.localPosition = startPosition;
+    enemyBody.bodyType = RigidbodyType2D.Dynamic;
+    boxCollider.enabled = true;
+    enemyBody.simulated = true;
+    alive = true;
+    animator.SetBool("Alive", alive);
+  }
+
+  public void Die()
+  {
+    enemyBody.bodyType = RigidbodyType2D.Static;
+    enemyBody.simulated = false;
+    boxCollider.enabled = false;
+    audioSource.PlayOneShot(audioSource.clip);
+    alive = false;
+    animator.SetBool("Alive", alive);
   }
 }

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
   public UnityEvent GameResetEvent;
   public UnityEvent GameStartEvent;
   public UnityEvent<int> ScoreIncrementEvent;
+  public UnityEvent PlayerStompEvent;
 
   [System.NonSerialized]
   public int score = 0; // we don't want this to show up in the inspector
@@ -58,5 +59,10 @@ public class GameManager : MonoBehaviour
     gameCamera.position = cameraStartPosition;
     // score reset
     score = 0;
+  }
+
+  public void PlayerStomp()
+  {
+    PlayerStompEvent.Invoke();
   }
 }

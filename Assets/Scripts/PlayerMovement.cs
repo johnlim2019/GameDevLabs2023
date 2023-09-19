@@ -24,20 +24,17 @@ public class PlayerMovement : MonoBehaviour
   public Animator marioAnimator;
   public AudioSource marioAudio;
   public GameManager gameManager;
-
   public BoxCollider2D MarioCollider;
-
-  void PlayDeathImpulse()
+  public void PlayDeathImpulse()
   {
     marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
   }
 
-  void GameOverScene()
+  public void GameOverScene()
   {
     marioAnimator.Play("Mario Death");
     PlayDeathImpulse();
     MarioCollider.enabled = false;
-    gameManager.GameOver();
   }
 
   // Start is called before the first frame update
@@ -162,25 +159,20 @@ public class PlayerMovement : MonoBehaviour
     }
   }
 
-
-  void OnTriggerEnter2D(Collider2D other)
-  {
-    if (other.gameObject.CompareTag("Enemies") && gameManager.alive)
-    {
-      GameOverScene();
-    }
-  }
-
   public void ResetMario()
   {
     SpriteReset();
     MarioCollider.enabled = true;
     marioBody.transform.position = marioStartPosition;
+    marioAnimator.ResetTrigger("onDeath");
   }
 
   public void SpriteReset()
   {
-    marioAnimator.SetTrigger("gameRestart");
+    if (marioAnimator.GetCurrentAnimatorStateInfo(0).IsName("Mario Death"))
+    {
+      marioAnimator.SetTrigger("gameRestart");
+    }
     faceRightState = true;
     marioSprite.flipX = false;
   }

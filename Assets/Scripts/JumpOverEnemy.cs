@@ -11,8 +11,10 @@ public class JumpOverGoomba : MonoBehaviour
   private bool countScoreState = false;
   public Vector3 boxSize = new Vector3();
   public float maxDistance;
-  public LayerMask layerMask;
+  public LayerMask groundMask;
+  public LayerMask enemyMask;
   public GameManager gameManager;
+  public BoxCollider2D MarioCollider;
 
   void Start()
   {
@@ -22,7 +24,7 @@ public class JumpOverGoomba : MonoBehaviour
   void FixedUpdate()
   {
     // mario jumps
-    if (OnGroundCheck() && Input.GetKeyDown(KeyCode.Space))
+    if (OnGroundCheck())
     {
       onGroundState = false;
       countScoreState = true;
@@ -31,10 +33,10 @@ public class JumpOverGoomba : MonoBehaviour
     // when jumping, and Goomba is near Mario and we haven't registered our score
     if (!onGroundState && countScoreState)
     {
-      if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
+      if (Mathf.Abs(transform.position.x - enemyLocation.position.x) > 1f)
       {
         countScoreState = false;
-        gameManager.ScoreIncrement();
+        // gameManager.ScoreIncrement();
         // Debug.Log(score);
       }
     }
@@ -42,13 +44,29 @@ public class JumpOverGoomba : MonoBehaviour
 
   void OnCollisionEnter2D(Collision2D col)
   {
-    if (col.gameObject.CompareTag("Ground")) onGroundState = true;
+    if (col.gameObject.CompareTag("Ground"))
+    {
+      onGroundState = true;
+    }
   }
 
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.gameObject.CompareTag("Enemies") && gameManager.alive && countScoreState)
+    {
+      gameManager.GameOver();
+    }
+    if (other.gameObject.CompareTag("Enemies") && gameManager.alive && !countScoreState)
+    {
+      gameManager.PlayerStomp();
+      gameManager.ScoreIncrement();
+      other.gameObject.GetComponent<EnemyMovement>().Die();
+    }
+  }
 
   private bool OnGroundCheck()
   {
-    if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask))
+    if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, groundMask))
     {
       // Debug.Log("on ground");
       return true;

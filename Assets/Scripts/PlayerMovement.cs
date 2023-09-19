@@ -158,12 +158,12 @@ public class PlayerMovement : MonoBehaviour
     }
   }
 
+
   void OnTriggerEnter2D(Collider2D other)
   {
-    Debug.Log(other.gameObject.tag + " " + gameManager.alive);
     if (other.gameObject.CompareTag("Enemies") && gameManager.alive)
     {
-      Debug.Log("Collided with goomba!");
+      // 
       GameOverScene();
     }
   }

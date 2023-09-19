@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -19,9 +20,7 @@ public class GameManager : MonoBehaviour
   public Vector3 marioStartPosition = new Vector3(0.0f, -2.703f, 0.0f);
   public Vector3 cameraStartPosition = new Vector3(0, 1.05f, -10);
   public GameObject BouncyLootBoxes;
-
   public GameObject BouncyLootBricks;
-
   public AudioSource marioDeath;
 
   [System.NonSerialized]

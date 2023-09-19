@@ -8,10 +8,7 @@ using UnityEngine.Events;
 
 public class ActionManager : MonoBehaviour
 {
-
-
   public MarioActions marioActions;
-  public PlayerInput playerInput;
   public UnityEvent jump;
   public UnityEvent jumpHold;
   public UnityEvent<int> moveCheck;

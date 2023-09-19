@@ -6,10 +6,10 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
 
-  private bool alive = true;
+  public bool alive = true;
   private float originalX;
   private float maxOffset = 1.0f;
-  private float enemyPatroltime = 0.5f;
+  private float enemyPatroltime = 1.0f;
   private int moveRight = -1;
   private Vector2 velocity;
   private Animator animator;
@@ -72,6 +72,7 @@ public class EnemyMovement : MonoBehaviour
     enemyBody.bodyType = RigidbodyType2D.Static;
     enemyBody.simulated = false;
     boxCollider.enabled = false;
+    enemyBody.transform.localPosition -= new Vector3(0, 0.25f);
     audioSource.PlayOneShot(audioSource.clip);
     alive = false;
     animator.SetBool("Alive", alive);

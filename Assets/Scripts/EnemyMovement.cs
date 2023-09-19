@@ -6,8 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
 
   private float originalX;
-  private float maxOffset = 3.0f;
-  private float enemyPatroltime = 2.0f;
+  private float maxOffset = 1.0f;
+  private float enemyPatroltime = 0.5f;
   private int moveRight = -1;
   private Vector2 velocity;
 
@@ -45,9 +45,8 @@ public class EnemyMovement : MonoBehaviour
       Movegoomba();
     }
   }
-  void OnTriggerEnter2D(Collider2D other)
+  public void RestartGame()
   {
-    // Debug.Log(other.gameObject.name);
+    enemyBody.transform.localPosition = startPosition;
   }
-
 }

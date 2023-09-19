@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+  public Vector3 marioStartPosition = new Vector3(0.0f, -2.703f, 0.0f);
   public float speed = 20;
   public float upSpeed = 15;
   public float maxSpeed = 30;
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
   public AudioSource marioAudio;
   public GameManager gameManager;
 
+  public BoxCollider2D MarioCollider;
 
   void PlayDeathImpulse()
   {
@@ -32,9 +34,10 @@ public class PlayerMovement : MonoBehaviour
 
   void GameOverScene()
   {
-    PlayDeathImpulse();
-    gameManager.GameOver();
     marioAnimator.Play("Mario Death");
+    PlayDeathImpulse();
+    MarioCollider.enabled = false;
+    gameManager.GameOver();
   }
 
   // Start is called before the first frame update
@@ -49,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     marioAudio = GetComponent<AudioSource>();
     marioAnimator.SetBool("onGround", onGroundState);
     gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    MarioCollider = GetComponent<BoxCollider2D>();
   }
 
   // Update is called once per frame
@@ -163,22 +167,20 @@ public class PlayerMovement : MonoBehaviour
   {
     if (other.gameObject.CompareTag("Enemies") && gameManager.alive)
     {
-      // 
       GameOverScene();
     }
   }
 
-  public void RestartButtonCallback(int input)
+  public void ResetMario()
   {
-    // Debug.Log("Restart!");
-    // reset everything
-    gameManager.ResetGame();
-    // resume time
-    Time.timeScale = 1.0f;
+    SpriteReset();
+    MarioCollider.enabled = true;
+    marioBody.transform.position = marioStartPosition;
   }
 
   public void SpriteReset()
   {
+    marioAnimator.SetTrigger("gameRestart");
     faceRightState = true;
     marioSprite.flipX = false;
   }

@@ -60,10 +60,10 @@ public class BouncyLootBrick : MonoBehaviour
     // Debug.Log("Activated loot box " + activated);
   }
 
-  public void Reset()
+  public void RestartGame()
   {
     BrickUsed = false;
     coinAnimator.SetBool("ActivateCoin", BrickUsed);
-    Debug.Log("BrickUsed " + BrickUsed);
+    // Debug.Log("BrickUsed " + BrickUsed);
   }
 }

@@ -79,7 +79,7 @@ public class BouncyLootBox : MonoBehaviour
     // Debug.Log("Activated loot box " + activated);
   }
 
-  public void Reset()
+  public void RestartGame()
   {
     soundComplete = false;
     BoxUsed = false;

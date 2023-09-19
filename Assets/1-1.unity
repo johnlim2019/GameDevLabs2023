@@ -1275,19 +1275,121 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 519420032}
-  playerStartposition: {x: 7, y: -3.862}
-  HUD: {fileID: 1481971101}
   scoreText: {fileID: 627200009}
   endScoreText: {fileID: 1393153304}
-  restartTopRight: {fileID: 1000106437}
-  enemies: {fileID: 1256705941}
-  endgame: {fileID: 1630944115}
   playerMovement: {fileID: 2048534966}
-  marioStartPosition: {x: 0, y: -2.703, z: 0}
   cameraStartPosition: {x: 0, y: 1.05, z: -10}
   BouncyLootBoxes: {fileID: 0}
   BouncyLootBricks: {fileID: 0}
   marioDeath: {fileID: 0}
+  GameOverEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805324958}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: GameOver
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  GameResetEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805324958}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 925207558}
+        m_TargetAssemblyTypeName: BouncyLootBoxManager, Assembly-CSharp
+        m_MethodName: ResetLootBox
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2125453967}
+        m_TargetAssemblyTypeName: BouncyLootBrickManager, Assembly-CSharp
+        m_MethodName: ResetLootBrick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1256705944}
+        m_TargetAssemblyTypeName: EnemyManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2048534966}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: ResetMario
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  GameStartEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805324958}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ScoreIncrementEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 805324958}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: ScoreIncrement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   alive: 1
 --- !u!4 &650533804
 Transform:
@@ -1512,6 +1614,7 @@ GameObject:
   - component: {fileID: 805324956}
   - component: {fileID: 805324955}
   - component: {fileID: 805324954}
+  - component: {fileID: 805324958}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1604,6 +1707,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &805324958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805324953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32b4289c9dbf4d7692c308749c2e30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUD: {fileID: 1481971101}
+  scoreText: {fileID: 627200009}
+  endScoreText: {fileID: 1393153304}
+  restartTopRight: {fileID: 1000106437}
+  endgame: {fileID: 1630944115}
 --- !u!1001 &857878791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1683,6 +1803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 925207557}
+  - component: {fileID: 925207558}
   m_Layer: 7
   m_Name: Bouncy-Loot-Boxes
   m_TagString: Untagged
@@ -1708,6 +1829,18 @@ Transform:
   - {fileID: 626490969}
   m_Father: {fileID: 1236385679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &925207558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925207556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d9005d7bf7749f3a02df8f407c208d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &946535253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7614904920028234566, guid: 2d9007cea91d849fcbc8436c20f4ac6c, type: 3}
@@ -1795,10 +1928,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2048534966}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: RestartButtonCallback
-        m_Mode: 3
+      - m_Target: {fileID: 650533803}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResetGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2101,6 +2234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1256705943}
   - component: {fileID: 1256705942}
+  - component: {fileID: 1256705944}
   m_Layer: 6
   m_Name: Enemies
   m_TagString: Enemies
@@ -2176,6 +2310,18 @@ Transform:
   - {fileID: 1984748804}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1256705944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256705941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a6021fbe9e04c1cae45c181cc39489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1276523822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
@@ -2263,10 +2409,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2048534966}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: RestartButtonCallback
-        m_Mode: 3
+      - m_Target: {fileID: 650533803}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResetGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2624,7 +2770,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630944113}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 0.7
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -2977,6 +3123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2d2a2d927ea41ac95498a38894651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marioStartPosition: {x: 0, y: -2.703, z: 0}
   speed: 20
   upSpeed: 15
   maxSpeed: 30
@@ -3266,7 +3413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01366775eb1a46a7a333349a71ba28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 2048534972}
   jump:
     m_PersistentCalls:
       m_Calls:
@@ -3497,6 +3643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125453966}
+  - component: {fileID: 2125453967}
   m_Layer: 7
   m_Name: Bouncy-Loot-Bricks
   m_TagString: Untagged
@@ -3522,6 +3669,18 @@ Transform:
   - {fileID: 433892486}
   m_Father: {fileID: 1236385679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125453967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125453965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181ef03c189dd4a85a8027363c569e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3504565890763081816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3771,6 +3930,14 @@ PrefabInstance:
     - target: {fileID: 5956006300010568623, guid: 7fde0bf4c832d4680811f95762f3348e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417600208295687548, guid: 7fde0bf4c832d4680811f95762f3348e, type: 3}
+      propertyPath: startPosition.x
+      value: 12.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417600208295687548, guid: 7fde0bf4c832d4680811f95762f3348e, type: 3}
+      propertyPath: startPosition.y
+      value: -3.8
       objectReference: {fileID: 0}
     - target: {fileID: 9184505789247706561, guid: 7fde0bf4c832d4680811f95762f3348e, type: 3}
       propertyPath: m_Name

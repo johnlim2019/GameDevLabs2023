@@ -9,11 +9,21 @@ public class HUDManager : MonoBehaviour
   public TextMeshProUGUI scoreText;
   public TextMeshProUGUI endScoreText;
   public Button restartTopRight;
+  public Button restartButton;
   public CanvasGroup endgame;
+  public GameManager gameManager;
 
-  public void StartGame()
+  void Start()
+  {
+    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    restartButton.onClick.AddListener(gameManager.ResetGame);
+    restartTopRight.onClick.AddListener(gameManager.ResetGame);
+  }
+
+  public void StartGame(int score)
   {
     endgame.alpha = 0f;
+    ScoreIncrement(score);
   }
 
   public void GameOver(int val)

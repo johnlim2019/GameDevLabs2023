@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
   private float startX; // smallest x-coordinate of the Camera
   private float endX; // largest x-coordinate of the camera
   private float viewportHalfWidth;
+  public Vector3 CameraStartPoint;
 
   void Start()
   {
@@ -31,4 +32,13 @@ public class CameraController : MonoBehaviour
       this.transform.position = new Vector3(desiredX, this.transform.position.y, this.transform.position.z);
   }
 
+  public void ResetCamera()
+  {
+    this.transform.position = CameraStartPoint;
+  }
+
+  public void World2Pipe()
+  {
+    this.transform.position = CameraStartPoint;
+  }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Build.Content;
@@ -7,6 +8,8 @@ using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Vector3 = UnityEngine.Vector3;
+using Vector2 = UnityEngine.Vector2;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
   }
 
-  public void GameOverScene()
+  public void GameOverScene(int value)
   {
     marioAnimator.Play("Mario Death");
     PlayDeathImpulse();
@@ -50,6 +53,15 @@ public class PlayerMovement : MonoBehaviour
     marioAnimator.SetBool("onGround", onGroundState);
     gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     MarioCollider = GetComponent<BoxCollider2D>();
+    SceneManager.activeSceneChanged += SetStartingPosition;
+  }
+  public void SetStartingPosition(Scene current, Scene next)
+  {
+    if (next.name == "1-2")
+    {
+      // change the position accordingly in your World-1-2 case
+      this.transform.position = new Vector3(-1.35f, -1.06f, 0.0f);
+    }
   }
 
   // Update is called once per frame

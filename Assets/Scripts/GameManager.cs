@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
   public UnityEvent<int> GameStartEvent;
   public UnityEvent<int> ScoreIncrementEvent;
   public UnityEvent PlayerStompEvent;
+  public UnityEvent<bool> GamePausedEvent;
 
   [System.NonSerialized]
   public int score = 0; // we don't want this to show up in the inspector
@@ -46,7 +47,6 @@ public class GameManager : Singleton<GameManager>
 
   private void StartSceneHelper()
   {
-
     marioDeath = GameObject.Find("MarioDeathSfx").GetComponent<AudioSource>();
     BGM = GameObject.Find("BGM").GetComponent<AudioSource>();
     ugBGM = GameObject.Find("UG-BGM").GetComponent<AudioSource>();
@@ -73,6 +73,8 @@ public class GameManager : Singleton<GameManager>
     ScoreIncrementEvent.AddListener(hudManager.ScoreIncrement);
 
     PlayerStompEvent.AddListener(playerMovement.PlayDeathImpulse);
+
+    GamePausedEvent.AddListener(playerMovement.PauseGame);
 
     GameStartEvent.Invoke(score);
     BGM.Play();

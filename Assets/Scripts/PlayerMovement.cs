@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
   private bool faceRightState = true;
   private bool moving = false;
   private bool jumpedState = false;
+  private bool isPaused = false;
   private Rigidbody2D marioBody;
   private SpriteRenderer marioSprite;
   public Animator marioAnimator;
@@ -107,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
   public void Jump()
   {
-    if (gameManager.alive && onGroundState)
+    if (gameManager.alive && onGroundState && !isPaused)
     {
       // jump
       PlayJumpSound();
@@ -121,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
   public void JumpHold()
   {
-    if (gameManager.alive && jumpedState)
+    if (gameManager.alive && jumpedState && !isPaused)
     {
       // jump higher
       marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);
@@ -138,9 +139,14 @@ public class PlayerMovement : MonoBehaviour
       marioBody.AddForce(movement * speed);
   }
 
+  public void PauseGame(bool value)
+  {
+    isPaused = value;
+  }
+
   public void MoveCheck(int value)
   {
-    if (value == 0)
+    if (value == 0 || isPaused)
     {
       moving = false;
     }

@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
   public BouncyLootBrickManager bouncyLootBrickManager;
   public EnemyManager enemyManager;
   public CameraController gameCamera;
+  public QuestionBoxPowerupManager questionBoxPowerupManager;
 
 
   // unity events 
@@ -56,6 +57,7 @@ public class GameManager : Singleton<GameManager>
     bouncyLootBrickManager = GameObject.Find("Bouncy-Loot-Bricks").GetComponent<BouncyLootBrickManager>();
     enemyManager = GameObject.Find("Enemies").GetComponent<EnemyManager>();
     gameCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
+    questionBoxPowerupManager = GameObject.Find("Bouncy-Powerup-Box").GetComponent<QuestionBoxPowerupManager>();
 
     GameOverEvent.AddListener(hudManager.GameOver);
     GameOverEvent.AddListener(playerMovement.GameOverScene);
@@ -66,7 +68,7 @@ public class GameManager : Singleton<GameManager>
     GameResetEvent.AddListener(enemyManager.RestartGame);
     GameResetEvent.AddListener(playerMovement.ResetMario);
     GameResetEvent.AddListener(gameCamera.ResetCamera);
-
+    GameResetEvent.AddListener(questionBoxPowerupManager.ResetPowerupBoxes);
 
     GameStartEvent.AddListener(hudManager.StartGame);
 

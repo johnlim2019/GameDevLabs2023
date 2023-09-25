@@ -38,10 +38,16 @@ public class BouncyLootBrick : MonoBehaviour
   void OnCollisionEnter2D(Collision2D col)
   {
     // when collide from bottom trigger animation.
-    if (col.gameObject.CompareTag("Player") && marioBody.position.y < boxBody.position.y && !BrickUsed)
+    float playerY = (float)(col.collider.transform.position.y - col.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2);
+    float otherY = (float)(this.transform.position.y + this.GetComponent<SpriteRenderer>().bounds.size.y / 2);
+    if (col.gameObject.CompareTag("Player") && playerY < otherY && !BrickUsed)
     {
       // play sound 
       CoinAnimationSound();
+    }
+    else if (col.gameObject.CompareTag("PowerUp"))
+    {
+      boxBody.bodyType = RigidbodyType2D.Static;
     }
   }
   // called 50 times a second

@@ -13,11 +13,12 @@ using Vector2 = UnityEngine.Vector2;
 
 public class PlayerMovement : MonoBehaviour
 {
+  public GameConstants gameConstants;
   public Vector3 marioStartPosition = new Vector3(0.0f, -2.703f, 0.0f);
-  public float speed = 20;
-  public float upSpeed = 15;
-  public float maxSpeed = 30;
-  public float deathImpulse = 15;
+  public float speed;
+  public float upSpeed;
+  public float maxSpeed;
+  public float deathImpulse;
   private bool onGroundState = true;
   private bool faceRightState = true;
   private bool moving = false;
@@ -44,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
+    speed = gameConstants.speed;
+    maxSpeed = gameConstants.maxSpeed;
+    deathImpulse = gameConstants.deathImpulse;
+    upSpeed = gameConstants.upSpeed;
     // Set to be 30 FPS
     Application.targetFrameRate = 30;
     marioBody = GetComponent<Rigidbody2D>();

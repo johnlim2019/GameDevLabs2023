@@ -30,8 +30,18 @@ public class GameManager : Singleton<GameManager>
   public UnityEvent PlayerStompEvent;
   public UnityEvent<bool> GamePausedEvent;
 
+
+  private EnumBGM currentTrack;
+  public enum EnumBGM
+  {
+    BGM = 0,
+    UG = 1
+  }
+
+
   [System.NonSerialized]
-  public int score = 0; // we don't want this to show up in the inspector
+  public int score; // we don't want this to show up in the inspector
+  public IntVariable topScore;
   public bool alive = true;
 
   override public void Awake()
@@ -94,10 +104,59 @@ public class GameManager : Singleton<GameManager>
 
   }
 
+  public void ToggleBGM()
+  {
+    if (BGM.isPlaying)
+    {
+      BGM.Pause();
+      currentTrack = EnumBGM.BGM;
+    }
+    else if (ugBGM.isPlaying)
+    {
+      ugBGM.Pause();
+      currentTrack = EnumBGM.UG;
+    }
+    else if (currentTrack == EnumBGM.BGM)
+    {
+      BGM.UnPause();
+    }
+    else if (currentTrack == EnumBGM.UG)
+    {
+      ugBGM.UnPause();
+    }
+  }
+
+  public void StopBGM()
+  {
+    if (BGM.isPlaying)
+    {
+      BGM.Stop();
+      currentTrack = EnumBGM.BGM;
+    }
+    else if (ugBGM.isPlaying)
+    {
+      ugBGM.Stop();
+      currentTrack = EnumBGM.UG;
+    }
+  }
+
+  public void RestartBGM()
+  {
+    if (currentTrack == EnumBGM.BGM)
+    {
+      BGM.Play();
+    }
+    else if (currentTrack == EnumBGM.UG)
+    {
+      ugBGM.Play();
+    }
+  }
+
   public void ScoreIncrement()
   {
     score++;
     ScoreIncrementEvent.Invoke(score);
+    topScore.SetValue(score);
   }
 
   public void GameOver()
@@ -105,6 +164,8 @@ public class GameManager : Singleton<GameManager>
     GameOverEvent.Invoke(0);
     marioDeath.PlayOneShot(marioDeath.clip);
     alive = false;
+    topScore.SetValue(score);
+    StopBGM();
   }
   public void ResetGame()
   {
@@ -112,6 +173,7 @@ public class GameManager : Singleton<GameManager>
     alive = true;
     // score reset
     score = 0;
+    RestartBGM();
   }
 
   public void PlayerStomp()

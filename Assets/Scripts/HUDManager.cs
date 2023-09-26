@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
@@ -10,14 +11,20 @@ public class HUDManager : MonoBehaviour
   public TextMeshProUGUI endScoreText;
   public Button restartTopRight;
   public Button restartButton;
+  public Button pauseButton;
   public CanvasGroup endgame;
   public GameManager gameManager;
+  public GameObject highScoreText;
+  public GameObject endHighScoreText;
+  public IntVariable topScore;
+
 
   void Start()
   {
     gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     restartButton.onClick.AddListener(gameManager.ResetGame);
     restartTopRight.onClick.AddListener(gameManager.ResetGame);
+    printTopScore();
   }
 
   public void StartGame(int score)
@@ -37,6 +44,7 @@ public class HUDManager : MonoBehaviour
         a = 0f
       };
       restartTopRight.GetComponent<Image>().color = colorInvisible;
+      pauseButton.GetComponent<Image>().color = colorInvisible;
       endgame.alpha = 1.0f;
       endgame.interactable = true; // enable interaction
       endgame.blocksRaycasts = true; // do not block raycasts
@@ -60,6 +68,7 @@ public class HUDManager : MonoBehaviour
       a = 1f
     };
     restartTopRight.GetComponent<Image>().color = colorVisible;
+    pauseButton.GetComponent<Image>().color = colorVisible;
   }
 
   public void ScoreIncrement(int score)
@@ -67,6 +76,22 @@ public class HUDManager : MonoBehaviour
     scoreText.text = "Score: " + score.ToString();
     endScoreText.text = "Score: " + score.ToString();
   }
+
+  public void printTopScore()
+  {
+    string str = "TOP-" + topScore.previousHighestValue.ToString("D4");
+    highScoreText.GetComponent<TextMeshProUGUI>().text = str;
+    highScoreText.SetActive(true);
+    endHighScoreText.GetComponent<TextMeshProUGUI>().text = str;
+    endHighScoreText.SetActive(true);
+  }
+
+  public void MainMenu()
+  {
+    SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
+  }
+
+
 
 
 }

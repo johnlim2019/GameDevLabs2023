@@ -104,15 +104,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2d2a2d927ea41ac95498a38894651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: 36b82a570e0c941738b85c51134586c5, type: 2}
   marioStartPosition: {x: 0, y: -2.703, z: 0}
   speed: 20
   upSpeed: 15
   maxSpeed: 30
   deathImpulse: 15
-  marioAnimator: {fileID: 0}
+  marioAnimator: {fileID: 6990456734402398723}
   marioAudio: {fileID: 8488686811767080754}
   gameManager: {fileID: 0}
-  MarioCollider: {fileID: 0}
+  MarioCollider: {fileID: 2381977439668816616}
 --- !u!50 &1520962056834734683
 Rigidbody2D:
   serializedVersion: 4
@@ -128,7 +129,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: 1.25
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

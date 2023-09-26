@@ -40,5 +40,6 @@ public class PauseButtonController : MonoBehaviour, IInteractiveButton
       image.sprite = pauseIcon;
     }
     gameManager.GamePausedEvent.Invoke(isPaused);
+    gameManager.ToggleBGM();
   }
 }

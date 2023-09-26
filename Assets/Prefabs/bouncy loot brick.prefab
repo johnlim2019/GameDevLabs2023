@@ -361,12 +361,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe31204ba634d491bbdd813da2a26ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupAnimator: {fileID: 3232407073520300488}
+  powerup: {fileID: 0}
   boxBody: {fileID: 2441862503438683555}
   springJoint: {fileID: 2955639925095801391}
-  mario: {fileID: 0}
-  coinAudio: {fileID: 2362524557209046014}
-  BrickUsed: 0
-  coinAnimator: {fileID: 3232407073520300488}
+  marioBody: {fileID: 0}
+  BoxUsed: 0
+  animator: {fileID: 0}
+  powerUpAudio: {fileID: 0}
+  soundComplete: 0
   gameManager: {fileID: 0}
 --- !u!82 &2362524557209046014
 AudioSource:

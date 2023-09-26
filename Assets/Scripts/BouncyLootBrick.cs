@@ -2,37 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BouncyLootBrick : MonoBehaviour
+public class BouncyLootBrick : BasePowerupBoxController
 {
-  public Rigidbody2D boxBody;
-  public SpringJoint2D springJoint;
-  public GameObject mario;
-  private Rigidbody2D marioBody;
-  public AudioSource coinAudio;
-  public bool BrickUsed = false;
-  public Animator coinAnimator;
-  public GameManager gameManager;
+  //   public Rigidbody2D boxBody;
+  //   public SpringJoint2D springJoint;
+  //   private Rigidbody2D marioBody;
+  //   public AudioSource powerUpAudio;
+  //   public bool BoxUsed = false;
+  //   public Animator powerupAnimator;
+  //   public GameManager gameManager;
 
 
   // Start is called before the first frame update
   void Start()
   {
-    boxBody = GetComponent<Rigidbody2D>();
-    springJoint = GetComponent<SpringJoint2D>();
-    mario = GameObject.FindGameObjectWithTag("Player");
-    marioBody = mario.GetComponent<Rigidbody2D>();
-    boxBody.bodyType = RigidbodyType2D.Static;
-    coinAudio = GetComponent<AudioSource>();
-    gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-  }
-
-  void CoinAnimationSound()
-  {
-    // play jump sound
-    BrickUsed = true;
-    coinAnimator.SetBool("ActivateCoin", BrickUsed);
-    coinAudio.PlayOneShot(coinAudio.clip);
-    gameManager.ScoreIncrement();
+    base.BaseStart();
   }
 
   void OnCollisionEnter2D(Collision2D col)
@@ -42,10 +26,10 @@ public class BouncyLootBrick : MonoBehaviour
     {
       float playerY = (float)(col.collider.transform.position.y - col.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2);
       float otherY = (float)(this.transform.position.y + this.GetComponent<SpriteRenderer>().bounds.size.y / 2);
-      if (playerY < otherY && !BrickUsed)
+      if (playerY < otherY && !BoxUsed)
       {
         // play sound 
-        CoinAnimationSound();
+        Activate();
       }
     }
     else if (col.gameObject.CompareTag("PowerUp"))
@@ -63,17 +47,23 @@ public class BouncyLootBrick : MonoBehaviour
       boxBody.bodyType = RigidbodyType2D.Dynamic;
   }
 
-
-  // Update is called once per frame
-  void Update()
+  public override void PowerUpSound()
   {
-    // Debug.Log("Activated loot box " + activated);
+    base.BasePowerUpSound();
   }
 
-  public void RestartGame()
+  public override void Activate()
   {
-    BrickUsed = false;
-    coinAnimator.SetBool("ActivateCoin", BrickUsed);
-    // Debug.Log("BrickUsed " + BrickUsed);
+    PowerUpSound();
+    base.BoxUsed = true;
+    powerupAnimator.SetBool("ActivateCoin", BoxUsed);
+    gameManager.ScoreIncrement();
+
+  }
+
+  public override void RestartGame()
+  {
+    BoxUsed = false;
+    powerupAnimator.SetBool("ActivateCoin", BoxUsed);
   }
 }

@@ -63,8 +63,8 @@ public class GameManager : Singleton<GameManager>
     GameOverEvent.AddListener(playerMovement.GameOverScene);
 
     GameResetEvent.AddListener(hudManager.RestartGame);
-    GameResetEvent.AddListener(bouncyLootBoxManager.ResetLootBox);
-    GameResetEvent.AddListener(bouncyLootBrickManager.ResetLootBrick);
+    GameResetEvent.AddListener(bouncyLootBoxManager.ResetPowerupBoxes);
+    GameResetEvent.AddListener(bouncyLootBrickManager.ResetPowerupBoxes);
     GameResetEvent.AddListener(enemyManager.RestartGame);
     GameResetEvent.AddListener(playerMovement.ResetMario);
     GameResetEvent.AddListener(gameCamera.ResetCamera);

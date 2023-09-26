@@ -362,14 +362,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407a02f9141d343549326336f3a623a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupAnimator: {fileID: 2098452569052243280}
+  powerup: {fileID: 0}
   boxBody: {fileID: 2753862688582175282}
   springJoint: {fileID: 4201920455813827192}
-  mario: {fileID: 6766531116205108024, guid: 83564cf15a5dc4ba69a374e808b79b93, type: 3}
+  marioBody: {fileID: 0}
   BoxUsed: 0
   animator: {fileID: 8512505674325348351}
-  coinAudio: {fileID: 8565663593437407170}
+  powerUpAudio: {fileID: 0}
   soundComplete: 0
-  coinAnimator: {fileID: 2098452569052243280}
   gameManager: {fileID: 0}
 --- !u!95 &8512505674325348351
 Animator:

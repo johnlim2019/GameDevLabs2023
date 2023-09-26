@@ -25,9 +25,3 @@ public interface IPowerup
     get;
   }
 }
-
-
-// public interface IPowerupApplicable
-// {
-//   public void RequestPowerupEffect( PowerupType i);
-// }

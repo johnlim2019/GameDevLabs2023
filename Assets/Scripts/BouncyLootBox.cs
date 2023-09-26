@@ -2,39 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BouncyLootBox : MonoBehaviour
+public class BouncyLootBox : BasePowerupBoxController
 {
-  public Rigidbody2D boxBody;
-  public SpringJoint2D springJoint;
-  public GameObject mario;
-  private Rigidbody2D marioBody;
-  public bool BoxUsed;
-  public Animator animator;
-  public AudioSource coinAudio;
-  public bool soundComplete = false;
-  public Animator coinAnimator;
-  public GameManager gameManager;
-
-
   // Start is called before the first frame update
   void Start()
   {
-    boxBody = GetComponent<Rigidbody2D>();
-    springJoint = GetComponent<SpringJoint2D>();
-    mario = GameObject.FindGameObjectWithTag("Player");
-    marioBody = mario.GetComponent<Rigidbody2D>();
-    boxBody.bodyType = RigidbodyType2D.Static;
-    animator = gameObject.GetComponent<Animator>();
-    coinAudio = GetComponent<AudioSource>();
-    gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-  }
-
-  void CoinAnimationSound()
-  {
-    // play jump sound
-    coinAnimator.SetBool("ActivateCoin", true);
-    coinAudio.PlayOneShot(coinAudio.clip);
-    soundComplete = true;
+    base.BaseStart();
   }
 
   void OnCollisionEnter2D(Collision2D col)
@@ -45,7 +18,7 @@ public class BouncyLootBox : MonoBehaviour
     if (col.gameObject.CompareTag("Player") && playerY < otherY && !soundComplete)
     {
       // activate box and score 
-      activate();
+      Activate();
     }
     else if (col.gameObject.CompareTag("PowerUp"))
     {
@@ -69,27 +42,27 @@ public class BouncyLootBox : MonoBehaviour
       boxBody.bodyType = RigidbodyType2D.Dynamic;
   }
 
-  void activate()
+  public override void PowerUpSound()
   {
-    // update animator state
-    animator.SetBool("Activated", true);
+    base.BasePowerUpSound();
+  }
+
+  public override void Activate()
+  {
+    base.BaseActivate();
+    // trigger powerup animation.
+    powerupAnimator.SetBool("ActivateCoin", true);
     // play sound 
-    CoinAnimationSound();
+    PowerUpSound();
     // score
     gameManager.ScoreIncrement();
   }
 
-  // Update is called once per frame
-  void Update()
-  {
-    // Debug.Log("Activated loot box " + activated);
-  }
 
-  public void RestartGame()
+
+  public override void RestartGame()
   {
-    soundComplete = false;
-    BoxUsed = false;
-    coinAnimator.SetBool("ActivateCoin", false);
-    animator.SetBool("Activated", false);
+    base.BaseRestartGame();
+    powerupAnimator.SetBool("ActivateCoin", false);
   }
 }

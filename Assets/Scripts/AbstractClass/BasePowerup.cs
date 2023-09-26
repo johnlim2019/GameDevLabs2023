@@ -44,7 +44,6 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
       animator.SetTrigger("spawned");
     }
     spawned = false;
-    rigidBody.velocity = new Vector3(0, 0, 0);
     rigidBody.bodyType = RigidbodyType2D.Static;
     boxCollider.enabled = false;
     goRight = true;

@@ -8,6 +8,7 @@ public class StarManPowerup : BasePowerup
 {
   // setup this object's type
   // instantiate variables
+  private float force = 3f;
   protected override void Start()
   {
     base.Start(); // call base class Start()
@@ -30,7 +31,7 @@ public class StarManPowerup : BasePowerup
       if (spawned)
       {
         goRight = !goRight;
-        base.rigidBody.AddForce(Vector2.right * 3 * (goRight ? 1 : -1), ForceMode2D.Impulse);
+        base.rigidBody.AddForce(Vector2.right * force * (goRight ? 1 : -1), ForceMode2D.Impulse);
 
       }
     }
@@ -48,7 +49,7 @@ public class StarManPowerup : BasePowerup
     StartCoroutine(EnablePhysics());
     spawned = true;
     base.rigidBody.velocity = new Vector3(0, 0);
-    base.rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse); // move to the right
+    base.rigidBody.AddForce(Vector2.right * force, ForceMode2D.Impulse); // move to the right
   }
 
 

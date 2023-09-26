@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BouncyLootBoxManager : MonoBehaviour
+public class BouncyLootBoxManager : MonoBehaviour, IPowerUpBoxManager
 {
   // Start is called before the first frame update
   void Start()
@@ -16,7 +16,7 @@ public class BouncyLootBoxManager : MonoBehaviour
 
   }
 
-  public void ResetLootBox()
+  public void ResetPowerupBoxes()
   {
     foreach (BouncyLootBox box in transform.GetComponentsInChildren<BouncyLootBox>())
     {

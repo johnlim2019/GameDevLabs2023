@@ -3,53 +3,28 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class QuestionBoxPowerupController : MonoBehaviour
+public class QuestionBoxPowerupController : BasePowerupBoxController
 {
-  public Animator powerupAnimator;
-  public BasePowerup powerup;
-  public Rigidbody2D boxBody;
-  public SpringJoint2D springJoint;
-  public GameObject mario;
-  private Rigidbody2D marioBody;
-  public bool BoxUsed;
-  public Animator animator;
-  public AudioSource powerUpAudio;
-  public bool soundComplete = false;
-  public GameManager gameManager;
   void Start()
   {
-    boxBody = GetComponent<Rigidbody2D>();
-    springJoint = GetComponent<SpringJoint2D>();
-    mario = GameObject.FindGameObjectWithTag("Player");
-    marioBody = mario.GetComponent<Rigidbody2D>();
-    boxBody.bodyType = RigidbodyType2D.Static;
-    animator = gameObject.GetComponent<Animator>();
-    powerUpAudio = GetComponent<AudioSource>();
-    gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    base.BaseStart();
   }
-
-  // Update is called once per frame
-  void Update()
-  {
-
-  }
-
 
   // called 50 times a second
   void FixedUpdate()
   {
-    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Done"))
+    if (base.animator.GetCurrentAnimatorStateInfo(0).IsName("Done"))
     {
-      BoxUsed = true;
+      base.BoxUsed = true;
     }
     else
     {
-      BoxUsed = false;
+      base.BoxUsed = false;
     }
-    if (marioBody.position.y > boxBody.position.y || BoxUsed)
-      boxBody.bodyType = RigidbodyType2D.Static;
+    if (base.marioBody.position.y > boxBody.position.y || BoxUsed)
+      base.boxBody.bodyType = RigidbodyType2D.Static;
     else
-      boxBody.bodyType = RigidbodyType2D.Dynamic;
+      base.boxBody.bodyType = RigidbodyType2D.Dynamic;
   }
 
 
@@ -59,39 +34,32 @@ public class QuestionBoxPowerupController : MonoBehaviour
     {
       float playerY = (float)(col.collider.transform.position.y - col.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2);
       float otherY = this.transform.position.y + 0.22f;
-      Debug.Log(playerY + " " + otherY);
+      // Debug.Log(playerY + " " + otherY);
       if (!powerup.spawned && otherY > playerY)
       {
-        powerup.SpawnPowerup();
-        powerupAnimator.SetTrigger("spawned");
-        activate();
-
+        base.powerup.SpawnPowerup();
+        base.powerupAnimator.SetTrigger("spawned");
+        Activate();
       }
     }
   }
 
-  void PowerUpSound()
+  public override void PowerUpSound()
   {
-    // play jump sound
-    powerUpAudio.PlayOneShot(powerUpAudio.clip);
-    soundComplete = true;
+    base.BasePowerUpSound();
   }
 
-  void activate()
+  public override void Activate()
   {
-    // update animator state
-    animator.SetBool("Activated", true);
-    // play sound 
     PowerUpSound();
+    base.BaseActivate();
   }
 
-  public void RestartGame()
+  public override void RestartGame()
   {
     powerup.DestroyPowerup();
     powerup.spawned = false;
-    soundComplete = false;
-    BoxUsed = false;
-    animator.SetBool("Activated", false);
-  }
+    base.BaseRestartGame();
 
+  }
 }

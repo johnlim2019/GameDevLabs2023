@@ -2398,6 +2398,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4092588991025115687}
+  - {fileID: 3040594227151602200}
   m_Father: {fileID: 1236385679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1834286098
@@ -2787,10 +2788,6 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.0070646703
       objectReference: {fileID: 0}
-    - target: {fileID: 331892694929554199, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1460694125178124916, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
       propertyPath: mario
       value: 
@@ -2827,21 +2824,9 @@ PrefabInstance:
       propertyPath: powerUpAudio
       value: 
       objectReference: {fileID: 1835130184081760722}
-    - target: {fileID: 1868013406209870931, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2268571445408917631, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
       propertyPath: m_TagString
       value: Obstacles
-      objectReference: {fileID: 0}
-    - target: {fileID: 2543218506952239069, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
-      propertyPath: m_BodyType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2543218506952239069, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
-      propertyPath: m_Simulated
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3014859676857473327, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
       propertyPath: m_UpdateMode
@@ -2855,10 +2840,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.529
       objectReference: {fileID: 0}
-    - target: {fileID: 4374883337310393254, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 9e790232f56e942bab7b42150311d86f, type: 2}
     - target: {fileID: 4374883337310393254, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
       propertyPath: m_AngularDrag
       value: 0
@@ -2946,10 +2927,6 @@ PrefabInstance:
     - target: {fileID: 8465408563674324327, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
       propertyPath: m_Name
       value: bouncy powerup mushroom box
-      objectReference: {fileID: 0}
-    - target: {fileID: 8465408563674324327, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
-      propertyPath: m_TagString
-      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 8500978335832963301, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3168,6 +3145,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4210200691886179058, guid: ab9575f164d154e7cad581f1b0b02bb0, type: 3}
   m_PrefabInstance: {fileID: 2225245204809437762}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3040594227151602200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+  m_PrefabInstance: {fileID: 5584541274577182819}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3504565890763081816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3376,6 +3358,75 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 2543218506952239069, guid: 752bf0539896d414d8e52b93ecc8e328, type: 3}
   m_PrefabInstance: {fileID: 1835130184081760713}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5584541274577182819
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1834286097}
+    m_Modifications:
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364485531184925227, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380412522521427410, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: m_Name
+      value: bouncy powerup star box
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558012834230825145, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: mario
+      value: 
+      objectReference: {fileID: 2048534963}
+    - target: {fileID: 8558012834230825145, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2048534969}
+    - target: {fileID: 8558012834230825145, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 650533803}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0d58bd9fdcb14286a4b3660f5b62821, type: 3}
 --- !u!1001 &5701032938796268243
 PrefabInstance:
   m_ObjectHideFlags: 0

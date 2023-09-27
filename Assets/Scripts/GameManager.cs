@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
   public HUDManager hudManager;
   public AudioSource BGM;
   public AudioSource ugBGM;
+  public AudioSource menuBGM;
   public PlayerMovement playerMovement;
   public BouncyLootBoxManager bouncyLootBoxManager;
   public BouncyLootBrickManager bouncyLootBrickManager;
@@ -50,7 +51,6 @@ public class GameManager : Singleton<GameManager>
     StartSceneHelper();
   }
 
-  // Start is called before the first frame update
   void Start()
   {
     SceneManager.activeSceneChanged += StartScene;
@@ -61,35 +61,50 @@ public class GameManager : Singleton<GameManager>
     marioDeath = GameObject.Find("MarioDeathSfx").GetComponent<AudioSource>();
     BGM = GameObject.Find("BGM").GetComponent<AudioSource>();
     ugBGM = GameObject.Find("UG-BGM").GetComponent<AudioSource>();
-    playerMovement = GameObject.Find("Mario").GetComponent<PlayerMovement>();
-    hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
-    bouncyLootBoxManager = GameObject.Find("Bouncy-Loot-Boxes").GetComponent<BouncyLootBoxManager>();
-    bouncyLootBrickManager = GameObject.Find("Bouncy-Loot-Bricks").GetComponent<BouncyLootBrickManager>();
-    enemyManager = GameObject.Find("Enemies").GetComponent<EnemyManager>();
-    gameCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
-    questionBoxPowerupManager = GameObject.Find("Bouncy-Powerup-Box").GetComponent<QuestionBoxPowerupManager>();
+    menuBGM = GameObject.Find("MenuBGM").GetComponent<AudioSource>();
 
-    GameOverEvent.AddListener(hudManager.GameOver);
-    GameOverEvent.AddListener(playerMovement.GameOverScene);
+    Debug.Log(SceneManager.GetActiveScene().name);
 
-    GameResetEvent.AddListener(hudManager.RestartGame);
-    GameResetEvent.AddListener(bouncyLootBoxManager.ResetPowerupBoxes);
-    GameResetEvent.AddListener(bouncyLootBrickManager.ResetPowerupBoxes);
-    GameResetEvent.AddListener(enemyManager.RestartGame);
-    GameResetEvent.AddListener(playerMovement.ResetMario);
-    GameResetEvent.AddListener(gameCamera.ResetCamera);
-    GameResetEvent.AddListener(questionBoxPowerupManager.ResetPowerupBoxes);
+    if (!SceneManager.GetActiveScene().name.Equals("Loading") && !SceneManager.GetActiveScene().name.Equals("Menu"))
+    {
+      menuBGM.Stop();
+      playerMovement = GameObject.Find("Mario").GetComponent<PlayerMovement>();
+      hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
+      bouncyLootBoxManager = GameObject.Find("Bouncy-Loot-Boxes").GetComponent<BouncyLootBoxManager>();
+      bouncyLootBrickManager = GameObject.Find("Bouncy-Loot-Bricks").GetComponent<BouncyLootBrickManager>();
+      enemyManager = GameObject.Find("Enemies").GetComponent<EnemyManager>();
+      gameCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
+      questionBoxPowerupManager = GameObject.Find("Bouncy-Powerup-Box").GetComponent<QuestionBoxPowerupManager>();
 
-    GameStartEvent.AddListener(hudManager.StartGame);
+      GameOverEvent.AddListener(hudManager.GameOver);
+      GameOverEvent.AddListener(playerMovement.GameOverScene);
 
-    ScoreIncrementEvent.AddListener(hudManager.ScoreIncrement);
+      GameResetEvent.AddListener(hudManager.RestartGame);
+      GameResetEvent.AddListener(bouncyLootBoxManager.ResetPowerupBoxes);
+      GameResetEvent.AddListener(bouncyLootBrickManager.ResetPowerupBoxes);
+      GameResetEvent.AddListener(enemyManager.RestartGame);
+      GameResetEvent.AddListener(playerMovement.ResetMario);
+      GameResetEvent.AddListener(gameCamera.ResetCamera);
+      GameResetEvent.AddListener(questionBoxPowerupManager.ResetPowerupBoxes);
 
-    PlayerStompEvent.AddListener(playerMovement.PlayDeathImpulse);
+      GameStartEvent.AddListener(hudManager.StartGame);
 
-    GamePausedEvent.AddListener(playerMovement.PauseGame);
+      ScoreIncrementEvent.AddListener(hudManager.ScoreIncrement);
 
-    GameStartEvent.Invoke(score);
-    BGM.Play();
+      PlayerStompEvent.AddListener(playerMovement.PlayDeathImpulse);
+
+      GamePausedEvent.AddListener(playerMovement.PauseGame);
+
+      GameStartEvent.Invoke(score);
+
+      BGM.Play();
+
+    }
+    else if (SceneManager.GetActiveScene().name.Equals("Menu"))
+    {
+      menuBGM.Play();
+    }
+
 
   }
   public void StartScene(Scene current, Scene next)

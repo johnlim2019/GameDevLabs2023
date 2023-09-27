@@ -321,7 +321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WORLD 1-1
+  m_text: WORLD x-x
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1fe998848bd84870bea71066f97c243, type: 2}
   m_sharedMaterial: {fileID: -879655046536230638, guid: b1fe998848bd84870bea71066f97c243, type: 2}
@@ -994,8 +994,8 @@ GameObject:
   - component: {fileID: 1435019277}
   - component: {fileID: 1435019276}
   - component: {fileID: 1435019275}
-  - component: {fileID: 1435019274}
   - component: {fileID: 1435019279}
+  - component: {fileID: 1435019280}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -1003,21 +1003,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1435019274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435019273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f277a7b20277344858cbad4a64d2749e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextSceneName: 1-1
-  topScore: {fileID: 11400000, guid: 7dd2299452e3249e49e18464eb66bcee, type: 2}
-  highScoreText: {fileID: 422414920}
 --- !u!114 &1435019275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1034,7 +1019,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &1435019276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,6 +1107,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1435019280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435019273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023a19290b88347e78b5108d1ff20ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 815156900}
+  menuName: Menu
+  nextLevel: {fileID: 11400000, guid: 3ee742c71db1b46af82b3bdc89de936d, type: 2}
+  mapName: {fileID: 422414920}
+  topMapName: {fileID: 860889419}
 --- !u!1 &1451415134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,8 +1657,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1435019274}
-        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+      - m_Target: {fileID: 1435019280}
+        m_TargetAssemblyTypeName: LoadScreen, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:

@@ -10,6 +10,7 @@ public class MenuButtons : MonoBehaviour
 {
   public string nextSceneName;
   public IntVariable topScore;
+  public StrVariable nextMap;
 
   public TextMeshProUGUI highScoreText;
 
@@ -17,6 +18,7 @@ public class MenuButtons : MonoBehaviour
   {
     string str = "TOP-" + topScore.previousHighestValue.ToString("D4");
     highScoreText.GetComponent<TextMeshProUGUI>().text = str;
+    nextMap.SetValue("1-1");
   }
 
   public void StartGame()
@@ -31,8 +33,4 @@ public class MenuButtons : MonoBehaviour
     highScoreText.GetComponent<TextMeshProUGUI>().text = str;
   }
 
-  public void MainMenu()
-  {
-    SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
-  }
 }

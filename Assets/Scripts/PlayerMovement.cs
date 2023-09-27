@@ -15,10 +15,10 @@ public class PlayerMovement : MonoBehaviour
 {
   public GameConstants gameConstants;
   public Vector3 marioStartPosition = new Vector3(0.0f, -2.703f, 0.0f);
-  public float speed;
-  public float upSpeed;
-  public float maxSpeed;
-  public float deathImpulse;
+  private float speed;
+  private float upSpeed;
+  private float maxSpeed;
+  private float deathImpulse;
   private bool onGroundState = true;
   private bool faceRightState = true;
   private bool moving = false;
@@ -59,11 +59,11 @@ public class PlayerMovement : MonoBehaviour
     marioAnimator.SetBool("onGround", onGroundState);
     gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     MarioCollider = GetComponent<BoxCollider2D>();
-    SceneManager.activeSceneChanged += SetStartingPosition;
+    SetStartingPosition(SceneManager.GetActiveScene());
   }
-  public void SetStartingPosition(Scene current, Scene next)
+  public void SetStartingPosition(Scene current)
   {
-    if (next.name == "1-2")
+    if (current.name == "1-2")
     {
       // change the position accordingly in your World-1-2 case
       transform.position = new Vector3(-1.35f, -1.06f, 0.0f);

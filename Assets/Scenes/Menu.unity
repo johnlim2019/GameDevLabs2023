@@ -2255,7 +2255,7 @@ Transform:
   m_GameObject: {fileID: 1513299872}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 1.05, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3283,7 +3283,7 @@ GameObject:
   - component: {fileID: 7117393032141687679}
   - component: {fileID: 6990456734074033581}
   m_Layer: 0
-  m_Name: Mario
+  m_Name: fakemario
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

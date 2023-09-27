@@ -8,19 +8,22 @@ public class EnemyMovement : MonoBehaviour
 
   public bool alive = true;
   private float originalX;
-  private float maxOffset = 1.0f;
-  private float enemyPatroltime = 1.0f;
+  private float maxOffset;
+  private float enemyPatroltime;
   private int moveRight = -1;
   private Vector2 velocity;
   private Animator animator;
   private Rigidbody2D enemyBody;
   public Vector3 startPosition;
   public BoxCollider2D boxCollider;
-
   public AudioSource audioSource;
+  public GameConstants gameConstants;
+
   void Start()
   {
     alive = true;
+    maxOffset = gameConstants.goombaMaxOffset;
+    enemyPatroltime = gameConstants.goombaPatrolTime;
     audioSource = GetComponent<AudioSource>();
     enemyBody = GetComponent<Rigidbody2D>();
     animator = GetComponent<Animator>();

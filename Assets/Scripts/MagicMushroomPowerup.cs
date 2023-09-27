@@ -24,6 +24,7 @@ public class MagicMushroomPowerup : BasePowerup
     // Debug.Log(col.gameObject.tag);
     if (col.gameObject.CompareTag("Player") && spawned)
     {
+      ApplyPowerup(this);
       DestroyPowerup();
     }
     else if (col.gameObject.CompareTag("Pipes")) // else if hitting Pipe, flip travel direction
@@ -57,6 +58,6 @@ public class MagicMushroomPowerup : BasePowerup
   public override void ApplyPowerup(MonoBehaviour i)
   {
     // TODO: do something with the object
-
+    Debug.Log("Magic mushroom powerup");
   }
 }

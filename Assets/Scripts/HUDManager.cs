@@ -24,31 +24,30 @@ public class HUDManager : MonoBehaviour
     gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     restartButton.onClick.AddListener(gameManager.ResetGame);
     restartTopRight.onClick.AddListener(gameManager.ResetGame);
-    printTopScore();
   }
 
   public void StartGame(int score)
   {
     endgame.alpha = 0f;
     ScoreIncrement(score);
+    printTopScore();
   }
 
-  public void GameOver(int val)
+  public void GameOver(int score)
   {
-    if (val == 0)
+    topScore.SetValue(score);
+    HUD.alpha = 0.0f;
+    restartTopRight.interactable = false;
+    Color colorInvisible = new Color(255, 255, 255)
     {
-      HUD.alpha = 0.0f;
-      restartTopRight.interactable = false;
-      Color colorInvisible = new Color(255, 255, 255)
-      {
-        a = 0f
-      };
-      restartTopRight.GetComponent<Image>().color = colorInvisible;
-      pauseButton.GetComponent<Image>().color = colorInvisible;
-      endgame.alpha = 1.0f;
-      endgame.interactable = true; // enable interaction
-      endgame.blocksRaycasts = true; // do not block raycasts
-    }
+      a = 0f
+    };
+    restartTopRight.GetComponent<Image>().color = colorInvisible;
+    pauseButton.GetComponent<Image>().color = colorInvisible;
+    endgame.alpha = 1.0f;
+    endgame.interactable = true; // enable interaction
+    endgame.blocksRaycasts = true; // do not block raycasts
+    printTopScore();
   }
 
   public void RestartGame()
@@ -89,6 +88,7 @@ public class HUDManager : MonoBehaviour
   public void MainMenu()
   {
     SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
+    gameManager.ResetGame();
   }
 
 

@@ -88,6 +88,7 @@ public class GameManager : Singleton<GameManager>
       GameResetEvent.AddListener(questionBoxPowerupManager.ResetPowerupBoxes);
 
       GameStartEvent.AddListener(hudManager.StartGame);
+      GameStartEvent.AddListener(makePlayerAlive);
 
       ScoreIncrementEvent.AddListener(hudManager.ScoreIncrement);
 
@@ -98,14 +99,19 @@ public class GameManager : Singleton<GameManager>
       GameStartEvent.Invoke(score);
 
       BGM.Play();
-
+      currentTrack = EnumBGM.BGM;
     }
     else if (SceneManager.GetActiveScene().name.Equals("Menu"))
     {
+      BGM.Stop();
+      ugBGM.Stop();
       menuBGM.Play();
     }
+  }
 
-
+  void makePlayerAlive(int value)
+  {
+    alive = true;
   }
   public void StartScene(Scene current, Scene next)
   {
@@ -171,12 +177,11 @@ public class GameManager : Singleton<GameManager>
   {
     score++;
     ScoreIncrementEvent.Invoke(score);
-    topScore.SetValue(score);
   }
 
   public void GameOver()
   {
-    GameOverEvent.Invoke(0);
+    GameOverEvent.Invoke(score);
     marioDeath.PlayOneShot(marioDeath.clip);
     alive = false;
     topScore.SetValue(score);
@@ -200,5 +205,6 @@ public class GameManager : Singleton<GameManager>
   {
     BGM.Stop();
     ugBGM.Play();
+    currentTrack = EnumBGM.UG;
   }
 }

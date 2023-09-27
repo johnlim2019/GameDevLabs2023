@@ -104,7 +104,8 @@ MonoBehaviour:
   alive: 1
   startPosition: {x: 12, y: -3.8, z: 0}
   boxCollider: {fileID: 183328908687305129}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 3944875763858429973}
+  gameConstants: {fileID: 11400000, guid: 36b82a570e0c941738b85c51134586c5, type: 2}
 --- !u!61 &183328908687305129
 BoxCollider2D:
   m_ObjectHideFlags: 0

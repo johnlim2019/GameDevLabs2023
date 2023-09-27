@@ -35,7 +35,7 @@ public class QuestionBoxPowerupController : BasePowerupBoxController
       float playerY = (float)(col.collider.transform.position.y - col.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2);
       float otherY = this.transform.position.y + 0.22f;
       // Debug.Log(playerY + " " + otherY);
-      if (!powerup.spawned && otherY > playerY)
+      if (!BoxUsed && !powerup.spawned && otherY > playerY)
       {
         base.powerup.SpawnPowerup();
         base.powerupAnimator.SetTrigger("spawned");

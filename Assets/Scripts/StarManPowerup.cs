@@ -24,6 +24,7 @@ public class StarManPowerup : BasePowerup
     // Debug.Log(col.gameObject.tag);
     if (col.gameObject.CompareTag("Player") && spawned)
     {
+      ApplyPowerup(this);
       DestroyPowerup();
     }
     else if (col.gameObject.CompareTag("Pipes"))
@@ -57,6 +58,6 @@ public class StarManPowerup : BasePowerup
   public override void ApplyPowerup(MonoBehaviour i)
   {
     // TODO: do something with the object
-
+    Debug.Log("Starman powerup");
   }
 }

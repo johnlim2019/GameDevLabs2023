@@ -13,7 +13,7 @@ public class HUDManager : MonoBehaviour
   public Button restartButton;
   public Button pauseButton;
   public CanvasGroup endgame;
-  public GameManager gameManager;
+  public SimpleGameEvent restartGame;
   public GameObject highScoreText;
   public GameObject endHighScoreText;
   public IntVariable topScore;
@@ -21,15 +21,15 @@ public class HUDManager : MonoBehaviour
 
   void Start()
   {
-    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    restartButton.onClick.AddListener(gameManager.ResetGame);
-    restartTopRight.onClick.AddListener(gameManager.ResetGame);
+    // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    // restartButton.onClick.AddListener(gameManager.ResetGame);
+    // restartTopRight.onClick.AddListener(gameManager.ResetGame);
   }
 
   public void StartGame(int score)
   {
     endgame.alpha = 0f;
-    ScoreIncrement(score);
+    ScoreUpdate(score);
     printTopScore();
   }
 
@@ -70,7 +70,7 @@ public class HUDManager : MonoBehaviour
     pauseButton.GetComponent<Image>().color = colorVisible;
   }
 
-  public void ScoreIncrement(int score)
+  public void ScoreUpdate(int score)
   {
     scoreText.text = "Score: " + score.ToString();
     endScoreText.text = "Score: " + score.ToString();
@@ -88,10 +88,6 @@ public class HUDManager : MonoBehaviour
   public void MainMenu()
   {
     SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
-    gameManager.ResetGame();
+    restartGame.Raise(null);
   }
-
-
-
-
 }

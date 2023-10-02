@@ -11,26 +11,14 @@ public class GameManager : Singleton<GameManager>
 {
   // elements to be scraped from the scene and then attached to events 
   public AudioSource marioDeath;
-  public HUDManager hudManager;
   public AudioSource BGM;
   public AudioSource ugBGM;
   public AudioSource menuBGM;
-  public PlayerMovement playerMovement;
-  public BouncyLootBoxManager bouncyLootBoxManager;
-  public BouncyLootBrickManager bouncyLootBrickManager;
-  public EnemyManager enemyManager;
-  public CameraController gameCamera;
-  public QuestionBoxPowerupManager questionBoxPowerupManager;
 
-
-  // unity events 
-  public UnityEvent<int> GameOverEvent;
-  public UnityEvent GameResetEvent;
-  public UnityEvent<int> GameStartEvent;
-  public UnityEvent<int> ScoreIncrementEvent;
-  public UnityEvent PlayerStompEvent;
-  public UnityEvent<bool> GamePausedEvent;
-
+  // events 
+  public IntSimpleGameEvent GameOverEvent;
+  public IntSimpleGameEvent ScoreUpdateEvent;
+  public IntSimpleGameEvent GameStartEvent;
 
   private EnumBGM currentTrack;
   public enum EnumBGM
@@ -68,38 +56,10 @@ public class GameManager : Singleton<GameManager>
     if (!SceneManager.GetActiveScene().name.Equals("Loading") && !SceneManager.GetActiveScene().name.Equals("Menu"))
     {
       menuBGM.Stop();
-      playerMovement = GameObject.Find("Mario").GetComponent<PlayerMovement>();
-      hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
-      bouncyLootBoxManager = GameObject.Find("Bouncy-Loot-Boxes").GetComponent<BouncyLootBoxManager>();
-      bouncyLootBrickManager = GameObject.Find("Bouncy-Loot-Bricks").GetComponent<BouncyLootBrickManager>();
-      enemyManager = GameObject.Find("Enemies").GetComponent<EnemyManager>();
-      gameCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
-      questionBoxPowerupManager = GameObject.Find("Bouncy-Powerup-Box").GetComponent<QuestionBoxPowerupManager>();
-
-      GameOverEvent.AddListener(hudManager.GameOver);
-      GameOverEvent.AddListener(playerMovement.GameOverScene);
-
-      GameResetEvent.AddListener(hudManager.RestartGame);
-      GameResetEvent.AddListener(bouncyLootBoxManager.ResetPowerupBoxes);
-      GameResetEvent.AddListener(bouncyLootBrickManager.ResetPowerupBoxes);
-      GameResetEvent.AddListener(enemyManager.RestartGame);
-      GameResetEvent.AddListener(playerMovement.ResetMario);
-      GameResetEvent.AddListener(gameCamera.ResetCamera);
-      GameResetEvent.AddListener(questionBoxPowerupManager.ResetPowerupBoxes);
-
-      GameStartEvent.AddListener(hudManager.StartGame);
-      GameStartEvent.AddListener(makePlayerAlive);
-
-      ScoreIncrementEvent.AddListener(hudManager.ScoreIncrement);
-
-      PlayerStompEvent.AddListener(playerMovement.PlayDeathImpulse);
-
-      GamePausedEvent.AddListener(playerMovement.PauseGame);
-
-      GameStartEvent.Invoke(score);
-
+      GameStartEvent.Raise(score);
       BGM.Play();
       currentTrack = EnumBGM.BGM;
+
     }
     else if (SceneManager.GetActiveScene().name.Equals("Menu"))
     {
@@ -109,14 +69,14 @@ public class GameManager : Singleton<GameManager>
     }
   }
 
-  void makePlayerAlive(int value)
+  void makePlayerAlive()
   {
     alive = true;
   }
   public void StartScene(Scene current, Scene next)
   {
     Debug.Log("scene change " + next.name);
-    StartSceneHelper();
+    makePlayerAlive();
   }
 
   // Update is called once per frame
@@ -176,12 +136,12 @@ public class GameManager : Singleton<GameManager>
   public void ScoreIncrement()
   {
     score++;
-    ScoreIncrementEvent.Invoke(score);
+    ScoreUpdateEvent.Raise(score);
   }
 
   public void GameOver()
   {
-    GameOverEvent.Invoke(score);
+    GameOverEvent.Raise(score);
     marioDeath.PlayOneShot(marioDeath.clip);
     alive = false;
     topScore.SetValue(score);
@@ -189,17 +149,12 @@ public class GameManager : Singleton<GameManager>
   }
   public void ResetGame()
   {
-    GameResetEvent.Invoke();
     alive = true;
     // score reset
     score = 0;
     RestartBGM();
   }
 
-  public void PlayerStomp()
-  {
-    PlayerStompEvent.Invoke();
-  }
 
   public void OverGround2UnderGroundBGM()
   {

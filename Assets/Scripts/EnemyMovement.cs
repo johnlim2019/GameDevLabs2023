@@ -67,6 +67,8 @@ public class EnemyMovement : MonoBehaviour
     boxCollider.enabled = true;
     enemyBody.simulated = true;
     alive = true;
+    moveRight = 1;
+    ComputeVelocity();
     animator.SetBool("Alive", alive);
   }
 

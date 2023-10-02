@@ -12,13 +12,14 @@ public class PauseButtonController : MonoBehaviour, IInteractiveButton
   public Sprite pauseIcon;
   public Sprite playIcon;
   private Image image;
-  public GameManager gameManager;
+  // public GameManager gameManager;
+  public BoolSimpleGameEvent pauseGame;
 
   // Start is called before the first frame update
   void Start()
   {
     image = GetComponent<Image>();
-    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
   }
 
   // Update is called once per frame
@@ -39,7 +40,8 @@ public class PauseButtonController : MonoBehaviour, IInteractiveButton
     {
       image.sprite = pauseIcon;
     }
-    gameManager.GamePausedEvent.Invoke(isPaused);
-    gameManager.ToggleBGM();
+    // gameManager.GamePausedEvent.Invoke(isPaused);
+    // gameManager.ToggleBGM();
+    pauseGame.Raise(isPaused);
   }
 }

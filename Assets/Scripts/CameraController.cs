@@ -35,6 +35,7 @@ public class CameraController : MonoBehaviour
   public void ResetCamera()
   {
     this.transform.position = CameraStartPoint;
+    Debug.Log("RESET CAMERA");
   }
 
   public void World2Pipe()

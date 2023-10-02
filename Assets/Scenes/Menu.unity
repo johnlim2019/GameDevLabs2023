@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 40529702}
   - component: {fileID: 40529701}
   - component: {fileID: 40529700}
+  - component: {fileID: 40529704}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -267,6 +268,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &40529704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40529699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f277a7b20277344858cbad4a64d2749e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: Loading
+  topScore: {fileID: 11400000, guid: 7dd2299452e3249e49e18464eb66bcee, type: 2}
+  nextMap: {fileID: 11400000, guid: 3ee742c71db1b46af82b3bdc89de936d, type: 2}
+  highScoreText: {fileID: 1665816468}
 --- !u!1 &163784871
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +615,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8137205295594548132}
+      - m_Target: {fileID: 40529704}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: ResetScore
         m_Mode: 1
@@ -824,7 +841,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!4 &473920189 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
   m_PrefabInstance: {fileID: 562777947}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &562777947
@@ -835,10 +852,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 23834845}
     m_Modifications:
-    - target: {fileID: 623998100023444888, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
-      propertyPath: m_Name
-      value: Ground
-      objectReference: {fileID: 0}
     - target: {fileID: 8073445108658036577, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
       propertyPath: m_Size.x
       value: 50
@@ -851,43 +864,47 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 623998100023444888, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
+      propertyPath: m_Name
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.40305
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.709604
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5.4686823
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9051331444519453399, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+    - target: {fileID: 9051331444519453399, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -895,7 +912,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9ec1e74478c364559a15c3dccbfaa87b, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 15d0a5829c2b34cd28701ca6ce477fc1, type: 3}
 --- !u!1 &634536728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,7 +2541,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8137205295594548132}
+      - m_Target: {fileID: 40529704}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -2792,7 +2809,6 @@ MonoBehaviour:
   bouncyLootBoxManager: {fileID: 0}
   bouncyLootBrickManager: {fileID: 0}
   enemyManager: {fileID: 0}
-  gameCamera: {fileID: 0}
   questionBoxPowerupManager: {fileID: 0}
   GameOverEvent:
     m_PersistentCalls:
@@ -3389,7 +3405,6 @@ GameObject:
   - component: {fileID: 1490071766431421966}
   - component: {fileID: 2939526319933156866}
   - component: {fileID: 3991570948941115145}
-  - component: {fileID: 8137205295594548132}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -3397,22 +3412,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8137205295594548132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8137205295594548131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f277a7b20277344858cbad4a64d2749e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextSceneName: Loading
-  topScore: {fileID: 11400000, guid: 7dd2299452e3249e49e18464eb66bcee, type: 2}
-  nextMap: {fileID: 11400000, guid: 3ee742c71db1b46af82b3bdc89de936d, type: 2}
-  highScoreText: {fileID: 1665816468}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

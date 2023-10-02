@@ -18,6 +18,10 @@ GameObject:
   - component: {fileID: 8488686811767080754}
   - component: {fileID: 6556527266701697171}
   - component: {fileID: 5416418186481788998}
+  - component: {fileID: 1464752321820455312}
+  - component: {fileID: 5587324262314175858}
+  - component: {fileID: 3849571734267227190}
+  - component: {fileID: 6428460428569498409}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Player
@@ -106,10 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: 36b82a570e0c941738b85c51134586c5, type: 2}
   marioStartPosition: {x: 0, y: -2.703, z: 0}
-  speed: 20
-  upSpeed: 15
-  maxSpeed: 30
-  deathImpulse: 15
   marioAnimator: {fileID: 6990456734402398723}
   marioAudio: {fileID: 8488686811767080754}
   gameManager: {fileID: 0}
@@ -198,17 +198,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2b47a8a31a443a6b5903e03e392ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLocation: {fileID: 0}
   boxSize: {x: 0.5, y: 0.1, z: 0}
   maxDistance: 0.34
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  gameManager: {fileID: 0}
-  MarioCollider: {fileID: 2381977439668816616}
+  gameOverEvent: {fileID: 11400000, guid: e8b185433b45040b18380f6e46e64ec9, type: 2}
+  playerStompEvent: {fileID: 11400000, guid: 7c18999a3286a4937a272aae31bb4da9, type: 2}
+  scoreIncrementEvent: {fileID: 11400000, guid: c02fa50778be4423fa222ee5397e462f, type: 2}
 --- !u!95 &6990456734402398723
 Animator:
   serializedVersion: 5
@@ -448,3 +445,127 @@ MonoBehaviour:
   click:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1464752321820455312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774602054319286893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e79bab313624a03ba0819f822ddaed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: aaec39933651f4d2ea4afbb7617a0088, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1886607922720807078}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: ResetMario
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5587324262314175858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774602054319286893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f6bac62676c4dc2bdb594a2c706906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 91ae192615dfa4e6e8351bd113f4d26d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1886607922720807078}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: PauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3849571734267227190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774602054319286893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e79bab313624a03ba0819f822ddaed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 7c18999a3286a4937a272aae31bb4da9, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1886607922720807078}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: PlayDeathImpulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6428460428569498409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774602054319286893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e79bab313624a03ba0819f822ddaed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: e8b185433b45040b18380f6e46e64ec9, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1886607922720807078}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: PlayDeathImpulse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1886607922720807078}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: GameOverScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

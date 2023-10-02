@@ -21,7 +21,8 @@ public class MoveStart1_2 : MonoBehaviour
   {
     if (other.tag == "Player")
     {
-      other.transform.position = new Vector3(-1f, -14f, 0);
+      other.transform.position = new Vector3(-1f, -13.5f, 0);
+      other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
       goUnderGround.Invoke();
     }
   }

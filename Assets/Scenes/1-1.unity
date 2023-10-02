@@ -5147,14 +5147,6 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4374883337310393254, guid: 9ada2feac9efc43aba58026200e5784d, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4374883337310393254, guid: 9ada2feac9efc43aba58026200e5784d, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4721115600203823384, guid: 9ada2feac9efc43aba58026200e5784d, type: 3}
       propertyPath: m_TagString
       value: PowerUp
@@ -5163,10 +5155,6 @@ PrefabInstance:
       propertyPath: spawned
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5179871428273150681, guid: 9ada2feac9efc43aba58026200e5784d, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 9e790232f56e942bab7b42150311d86f, type: 2}
     - target: {fileID: 8465408563674324327, guid: 9ada2feac9efc43aba58026200e5784d, type: 3}
       propertyPath: m_Name
       value: bouncy powerup mushroom box

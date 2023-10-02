@@ -31,20 +31,24 @@ public class JumpOverGoomba : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.gameObject.CompareTag("Enemies") &&
-      (other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2 > this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.01))
+    if (other.gameObject.CompareTag("Enemies"))
     {
-      // Debug.Log((other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2) + " " + (this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.01));
-      gameOverEvent.Raise(null);
+      if
+        (other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2 > this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.01)
+      {
+        // Debug.Log((other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2) + " " + (this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.01));
+        gameOverEvent.Raise(null);
+      }
+      else
+      {
+        // Debug.Log("SQUAHS");
+        // Debug.Log((other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2) + " " + (this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.01));
+        playerStompEvent.Raise(null);
+        scoreIncrementEvent.Raise(null);
+        other.gameObject.GetComponent<EnemyMovement>().Die();
+      }
     }
-    else
-    {
-      // Debug.Log("SQUAHS");
-      // Debug.Log((other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2) + " " + (this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.01));
-      playerStompEvent.Raise(null);
-      scoreIncrementEvent.Raise(null);
-      other.gameObject.GetComponent<EnemyMovement>().Die();
-    }
+
   }
 
   // private bool OnGroundCheck()

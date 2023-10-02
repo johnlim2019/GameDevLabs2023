@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5802244096802857559}
   m_Layer: 7
   m_Name: bouncy loot brick
-  m_TagString: Obstacles
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

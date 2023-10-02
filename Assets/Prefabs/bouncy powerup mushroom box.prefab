@@ -98,7 +98,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3fc1d52e84ca845b5b16ac818150bbbc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -422,7 +422,7 @@ MonoBehaviour:
   powerup: {fileID: 4842189678673101335}
   boxBody: {fileID: 0}
   springJoint: {fileID: 0}
-  mario: {fileID: 0}
+  marioBody: {fileID: 0}
   BoxUsed: 0
   animator: {fileID: 0}
   powerUpAudio: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 2543218506952239069}
   m_Layer: 7
   m_Name: bouncy powerup mushroom box
-  m_TagString: Obstacles
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

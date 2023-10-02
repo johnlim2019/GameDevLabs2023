@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 6089997610649671026}
   m_Layer: 7
   m_Name: bouncy powerup star box
-  m_TagString: Obstacles
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -605,7 +605,7 @@ MonoBehaviour:
   powerup: {fileID: 5831236145435858568}
   boxBody: {fileID: 6089997610649671026}
   springJoint: {fileID: 1361021411220366849}
-  mario: {fileID: 0}
+  marioBody: {fileID: 0}
   BoxUsed: 0
   animator: {fileID: 462741866373154804}
   powerUpAudio: {fileID: 2368353703676397414}

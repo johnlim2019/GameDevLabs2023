@@ -1168,6 +1168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2048534965}
   endLimit: {fileID: 39050800}
+  cameraStartPosition: {x: 0, y: 1.05, z: -10}
 --- !u!81 &519420035
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1348,7 +1349,6 @@ MonoBehaviour:
   scoreText: {fileID: 627200009}
   endScoreText: {fileID: 1393153304}
   playerMovement: {fileID: 2048534966}
-  cameraStartPosition: {x: 0, y: 1.05, z: -10}
   BouncyLootBoxes: {fileID: 0}
   BouncyLootBricks: {fileID: 0}
   marioDeath: {fileID: 0}
@@ -1433,6 +1433,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2048534966}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: ResetMario
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 519420034}
+        m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
+        m_MethodName: ResetCamera
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
   private float originalX;
   private float maxOffset = 1.0f;
   private float enemyPatroltime = 1.0f;
-  private int moveRight = -1;
+  public int moveRight = 1;
   private Vector2 velocity;
   private Animator animator;
   private Rigidbody2D enemyBody;
@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
   }
   void ComputeVelocity()
   {
-    velocity = new Vector2((moveRight) * maxOffset / enemyPatroltime, 0);
+    velocity = new Vector2(moveRight * maxOffset / enemyPatroltime, 0);
   }
   void Movegoomba()
   {
@@ -64,6 +64,8 @@ public class EnemyMovement : MonoBehaviour
     boxCollider.enabled = true;
     enemyBody.simulated = true;
     alive = true;
+    moveRight = 1;
+    ComputeVelocity();
     animator.SetBool("Alive", alive);
   }
 
@@ -75,6 +77,7 @@ public class EnemyMovement : MonoBehaviour
     enemyBody.transform.localPosition -= new Vector3(0, 0.25f);
     audioSource.PlayOneShot(audioSource.clip);
     alive = false;
+    moveRight = 1;
     animator.SetBool("Alive", alive);
   }
 }

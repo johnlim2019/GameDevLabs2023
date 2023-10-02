@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class GameManager : MonoBehaviour
   public TextMeshProUGUI endScoreText;
   private Rigidbody2D marioBody;
   public PlayerMovement playerMovement;
-  public Vector3 cameraStartPosition = new Vector3(0, 1.05f, -10);
   public GameObject BouncyLootBoxes;
   public GameObject BouncyLootBricks;
   public AudioSource marioDeath;
@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
   public UnityEvent GameStartEvent;
   public UnityEvent<int> ScoreIncrementEvent;
   public UnityEvent PlayerStompEvent;
+
+  delegate void marioKillGoomba();
 
   [System.NonSerialized]
   public int score = 0; // we don't want this to show up in the inspector
@@ -56,8 +58,6 @@ public class GameManager : MonoBehaviour
   {
     GameResetEvent.Invoke();
     alive = true;
-    gameCamera.position = cameraStartPosition;
-    // score reset
     score = 0;
   }
 

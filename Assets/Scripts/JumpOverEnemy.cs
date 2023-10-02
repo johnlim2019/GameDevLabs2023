@@ -58,8 +58,7 @@ public class JumpOverGoomba : MonoBehaviour
     }
     if (other.gameObject.CompareTag("Enemies") && gameManager.alive && !countScoreState)
     {
-      gameManager.PlayerStomp();
-      gameManager.ScoreIncrement();
+      gameManager.marioKillGoomba();
       other.gameObject.GetComponent<EnemyMovement>().Die();
     }
   }

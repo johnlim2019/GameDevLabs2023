@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
   public UnityEvent<int> ScoreIncrementEvent;
   public UnityEvent PlayerStompEvent;
 
-  delegate void marioKillGoomba();
+  public delegate void MarioKillGoomba();
+  public MarioKillGoomba marioKillGoomba;
 
   [System.NonSerialized]
   public int score = 0; // we don't want this to show up in the inspector
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviour
   {
     GameStartEvent.Invoke();
     marioDeath = GameObject.Find("MarioDeathSfx").GetComponent<AudioSource>();
+    marioKillGoomba += PlayerStompEvent.Invoke;
+    marioKillGoomba += ScoreIncrement;
   }
 
   // Update is called once per frame
@@ -59,10 +62,5 @@ public class GameManager : MonoBehaviour
     GameResetEvent.Invoke();
     alive = true;
     score = 0;
-  }
-
-  public void PlayerStomp()
-  {
-    PlayerStompEvent.Invoke();
   }
 }

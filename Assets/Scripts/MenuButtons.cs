@@ -5,12 +5,14 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 public class MenuButtons : MonoBehaviour
 {
   public string nextSceneName;
   public IntVariable topScore;
   public StrVariable nextMap;
+  public ScoreVariable scoreVariable;
 
   public TextMeshProUGUI highScoreText;
 
@@ -19,6 +21,7 @@ public class MenuButtons : MonoBehaviour
     string str = "TOP-" + topScore.previousHighestValue.ToString("D4");
     highScoreText.GetComponent<TextMeshProUGUI>().text = str;
     nextMap.SetValue("1-1");
+    scoreVariable.ResetValue();
   }
 
   public void StartGame()

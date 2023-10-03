@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     if (current.name == "1-2")
     {
       // change the position accordingly in your World-1-2 case
-      transform.position = new Vector3(-1.35f, -1.06f, 0.0f);
+      transform.position = new Vector3(4f, -1.06f, 0.0f);
     }
   }
 

@@ -8,14 +8,12 @@ public class MoveStart1_2 : MonoBehaviour
 {
   GameManager gameManager;
   CameraController cameraController;
-  public UnityEvent goUnderGround;
+  public SimpleGameEvent goUnderGround;
 
   void Start()
   {
     gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
-    goUnderGround.AddListener(gameManager.OverGround2UnderGroundBGM);
-    goUnderGround.AddListener(cameraController.World2Pipe);
   }
   void OnTriggerEnter2D(Collider2D other)
   {
@@ -23,7 +21,7 @@ public class MoveStart1_2 : MonoBehaviour
     {
       other.transform.position = new Vector3(-1f, -13.5f, 0);
       other.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-      goUnderGround.Invoke();
+      goUnderGround.Raise(null);
     }
   }
 }

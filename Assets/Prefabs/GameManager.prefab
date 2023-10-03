@@ -564,19 +564,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2032b0fd01d4f399ca61444422e32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marioDeath: {fileID: 0}
-  hudManager: {fileID: 0}
-  BGM: {fileID: 0}
-  ugBGM: {fileID: 0}
-  menuBGM: {fileID: 0}
-  playerMovement: {fileID: 0}
-  bouncyLootBoxManager: {fileID: 0}
-  bouncyLootBrickManager: {fileID: 0}
-  enemyManager: {fileID: 0}
-  questionBoxPowerupManager: {fileID: 0}
+  marioDeath: {fileID: 5531420845344655511}
+  BGM: {fileID: 8206244520126608128}
+  ugBGM: {fileID: 8471125935368171774}
+  menuBGM: {fileID: 3068687680673955898}
   GameOverEvent: {fileID: 11400000, guid: ad2bae05fe139459b95d15b9a7f80c43, type: 2}
   ScoreUpdateEvent: {fileID: 11400000, guid: 6e8d56d1b79814704a1f8c7a10fb120e, type: 2}
   GameStartEvent: {fileID: 11400000, guid: 232a8e7929712425e82179eb871bfec1, type: 2}
+  score: {fileID: 11400000, guid: d3d7b00d243dd4780b688431ca374cdc, type: 2}
   topScore: {fileID: 11400000, guid: 7dd2299452e3249e49e18464eb66bcee, type: 2}
   alive: 1
 --- !u!114 &-393009274225601983

@@ -30,17 +30,11 @@ public class QuestionBoxPowerupController : BasePowerupBoxController
 
   private void OnCollisionEnter2D(Collision2D col)
   {
-    if (col.gameObject.tag == "Player")
+    if (col.gameObject.tag == "Player" && !BoxUsed && !powerup.spawned && col.otherCollider == base.edgeColliderBottom)
     {
-      float playerY = (float)(col.collider.transform.position.y - col.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2);
-      float otherY = this.transform.position.y + 0.22f;
-      // Debug.Log(playerY + " " + otherY);
-      if (!BoxUsed && !powerup.spawned && otherY > playerY)
-      {
-        base.powerup.SpawnPowerup();
-        base.powerupAnimator.SetTrigger("spawned");
-        Activate();
-      }
+      base.powerup.SpawnPowerup();
+      base.powerupAnimator.SetTrigger("spawned");
+      Activate();
     }
   }
 

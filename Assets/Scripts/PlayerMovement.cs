@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
   private float deathImpulse;
   private bool onGroundState = true;
   private bool faceRightState = true;
+  public BoolVariable marioFaceRight;
   private bool moving = false;
   private bool jumpedState = false;
   private bool isPaused = false;
@@ -30,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
   public AudioSource marioAudio;
   public GameManager gameManager;
   public BoxCollider2D MarioCollider;
+
+
   public void PlayDeathImpulse()
   {
     marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
@@ -73,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    // Debug.Log(onGroundState);
     if (gameManager.alive)
     {
       marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
@@ -87,15 +89,20 @@ public class PlayerMovement : MonoBehaviour
     {
       return;
     }
-    ContactPoint2D contact = col.contacts[0];
-    float otherY = (float)(contact.collider.transform.position.y + contact.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2 - 0.1);
-    float playerY = (float)(contact.otherCollider.transform.position.y - contact.otherCollider.GetComponent<SpriteRenderer>().bounds.size.y / 2 + 0.1);
-    if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || (col.gameObject.CompareTag("Obstacles") && playerY > otherY)) && !onGroundState)
+    // ContactPoint2D contact = col.contacts[0];
+    // float otherY = (float)(contact.collider.transform.position.y + contact.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2 - 0.1);
+    // float playerY = (float)(contact.otherCollider.transform.position.y - contact.otherCollider.GetComponent<SpriteRenderer>().bounds.size.y / 2 + 0.1);
+    if ((col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Enemies") || col.collider.name == "Top") && !onGroundState)
     {
       onGroundState = true;
       // update animator state
       marioAnimator.SetBool("onGround", onGroundState);
     }
+  }
+
+  public void DamageMario()
+  {
+    GetComponent<MarioStateController>().SetPowerup(PowerupType.Damage);
   }
 
   // FixedUpdate is called 50 times a second
@@ -167,11 +174,17 @@ public class PlayerMovement : MonoBehaviour
     }
   }
 
+  private void updateMarioShouldFaceRight(bool value)
+  {
+    faceRightState = value;
+    marioFaceRight.SetValue(faceRightState);
+  }
+
   void FlipMarioSprite(int value)
   {
     if (value == -1 && faceRightState)
     {
-      faceRightState = false;
+      updateMarioShouldFaceRight(false);
       marioSprite.flipX = true;
       if (marioBody.velocity.x > 0.10f)
         marioAnimator.SetTrigger("onSkid");
@@ -179,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
 
     if (value == 1 && !faceRightState)
     {
-      faceRightState = true;
+      updateMarioShouldFaceRight(true);
       marioSprite.flipX = false;
       if (marioBody.velocity.x < -0.01f)
         marioAnimator.SetTrigger("onSkid");
@@ -188,6 +201,7 @@ public class PlayerMovement : MonoBehaviour
 
   public void ResetMario()
   {
+    GetComponent<MarioStateController>().GameRestart();
     SpriteReset();
     MarioCollider.enabled = true;
     marioBody.transform.position = marioStartPosition;

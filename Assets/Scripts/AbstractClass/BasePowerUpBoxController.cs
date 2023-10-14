@@ -11,7 +11,10 @@ public abstract class BasePowerupBoxController : MonoBehaviour, IPowerUpBoxContr
   public Animator animator;
   public AudioSource powerUpAudio;
   public bool soundComplete = false;
-  public GameManager gameManager;
+  public SimpleGameEvent ScoreIncrementEvent;
+  public BoxCollider2D boxCollider;
+  public EdgeCollider2D edgeColliderTop;
+  public EdgeCollider2D edgeColliderBottom;
 
   public void BaseStart()
   {
@@ -21,7 +24,6 @@ public abstract class BasePowerupBoxController : MonoBehaviour, IPowerUpBoxContr
     animator = gameObject.GetComponent<Animator>();
     powerUpAudio = GetComponent<AudioSource>();
     marioBody = GameObject.Find("Mario").GetComponent<Rigidbody2D>();
-    gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
   }
 
   public abstract void PowerUpSound();

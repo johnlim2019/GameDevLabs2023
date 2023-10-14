@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class BouncyLootBrick : BasePowerupBoxController
 {
-  //   public Rigidbody2D boxBody;
-  //   public SpringJoint2D springJoint;
-  //   private Rigidbody2D marioBody;
-  //   public AudioSource powerUpAudio;
-  //   public bool BoxUsed = false;
-  //   public Animator powerupAnimator;
-  //   public GameManager gameManager;
 
 
   // Start is called before the first frame update
@@ -22,15 +15,11 @@ public class BouncyLootBrick : BasePowerupBoxController
   void OnCollisionEnter2D(Collision2D col)
   {
     // when collide from bottom trigger animation.
-    if (col.gameObject.CompareTag("Player"))
+    if (col.gameObject.CompareTag("Player") && !BoxUsed && col.otherCollider == base.edgeColliderBottom)
     {
-      float playerY = (float)(col.collider.transform.position.y - col.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2);
-      float otherY = (float)(this.transform.position.y + this.GetComponent<SpriteRenderer>().bounds.size.y / 2);
-      if (playerY < otherY && !BoxUsed)
-      {
-        // play sound 
-        Activate();
-      }
+      // play sound 
+      Activate();
+
     }
     else if (col.gameObject.CompareTag("PowerUp"))
     {
@@ -57,7 +46,7 @@ public class BouncyLootBrick : BasePowerupBoxController
     PowerUpSound();
     base.BoxUsed = true;
     powerupAnimator.SetBool("ActivateCoin", BoxUsed);
-    gameManager.ScoreIncrement();
+    base.ScoreIncrementEvent.Raise(null);
 
   }
 

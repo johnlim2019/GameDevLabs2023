@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a1c9944cf7b434db35073c24c019f4, type: 3}
-  m_Name: GameConstants
+  m_Script: {fileID: 11500000, guid: b4322c5116ff2467396111e892283118, type: 3}
+  m_Name: ShouldTransformToInvincibleMario
   m_EditorClassIdentifier: 
-  maxLives: 10
-  speed: 25
-  maxSpeed: 25
-  upSpeed: 15
-  deathImpulse: 15
-  marioStartingPosition: {x: 0, y: 0, z: 0}
-  goombaPatrolTime: 1
-  goombaMaxOffset: 2
+  map:
+  - fromState: 1
+    powerupCollected: 99
+  - fromState: 2
+    powerupCollected: 99

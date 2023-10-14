@@ -2,12 +2,13 @@ using UnityEngine;
 
 public abstract class BasePowerup : MonoBehaviour, IPowerup
 {
-  public IPowerup.PowerupType type;
+  public PowerupType type;
   public bool spawned = false;
   protected bool consumed = false;
   protected bool goRight = true;
   protected Rigidbody2D rigidBody;
   protected BoxCollider2D boxCollider;
+  protected EdgeCollider2D edgeCollider;
   public Animator animator;
 
   // base methods
@@ -15,11 +16,12 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
   {
     rigidBody = GetComponent<Rigidbody2D>();
     boxCollider = GetComponent<BoxCollider2D>();
+    edgeCollider = GetComponent<EdgeCollider2D>();
   }
 
   // interface methods
   // 1. concrete methods
-  public IPowerup.PowerupType powerupType
+  public PowerupType powerupType
   {
     get // getter
     {
@@ -52,5 +54,5 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
 
   // 2. abstract methods, must be implemented by derived classes
   public abstract void SpawnPowerup();
-  public abstract void ApplyPowerup(MonoBehaviour i);
+  public abstract void ApplyPowerup(GameObject i);
 }

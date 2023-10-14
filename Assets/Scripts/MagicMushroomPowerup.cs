@@ -9,12 +9,11 @@ public class MagicMushroomPowerup : BasePowerup
   // setup this object's type
   // instantiate variables
   float force = 3f;
+
   protected override void Start()
   {
     base.Start(); // call base class Start()
-    this.type = IPowerup.PowerupType.MagicMushroom;
-    base.rigidBody = GetComponent<Rigidbody2D>();
-    boxCollider = GetComponent<BoxCollider2D>();
+    this.type = PowerupType.MagicMushroom;
     base.rigidBody.bodyType = RigidbodyType2D.Static;
     base.boxCollider.enabled = false;
   }
@@ -24,7 +23,7 @@ public class MagicMushroomPowerup : BasePowerup
     // Debug.Log(col.gameObject.tag);
     if (col.gameObject.CompareTag("Player") && spawned)
     {
-      ApplyPowerup(this);
+      ApplyPowerup(col.gameObject);
       DestroyPowerup();
     }
     else if (col.gameObject.CompareTag("Pipes")) // else if hitting Pipe, flip travel direction
@@ -55,9 +54,15 @@ public class MagicMushroomPowerup : BasePowerup
 
 
   // interface implementation
-  public override void ApplyPowerup(MonoBehaviour i)
+  public override void ApplyPowerup(GameObject i)
   {
     // TODO: do something with the object
-    Debug.Log("Magic mushroom powerup");
+    GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
+    bool result = i.TryGetComponent<MarioStateController>(out MarioStateController marioController);
+    if (result)
+    {
+      marioController.SetPowerup(this.powerupType);
+      Debug.Log("Magic mushroom powerup");
+    }
   }
 }

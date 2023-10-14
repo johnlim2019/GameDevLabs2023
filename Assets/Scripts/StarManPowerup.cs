@@ -12,7 +12,7 @@ public class StarManPowerup : BasePowerup
   protected override void Start()
   {
     base.Start(); // call base class Start()
-    this.type = IPowerup.PowerupType.MagicMushroom;
+    this.type = PowerupType.StarMan;
     base.rigidBody = GetComponent<Rigidbody2D>();
     boxCollider = GetComponent<BoxCollider2D>();
     base.rigidBody.bodyType = RigidbodyType2D.Static;
@@ -24,7 +24,7 @@ public class StarManPowerup : BasePowerup
     // Debug.Log(col.gameObject.tag);
     if (col.gameObject.CompareTag("Player") && spawned)
     {
-      ApplyPowerup(this);
+      ApplyPowerup(col.gameObject);
       DestroyPowerup();
     }
     else if (col.gameObject.CompareTag("Pipes"))
@@ -55,7 +55,7 @@ public class StarManPowerup : BasePowerup
 
 
   // interface implementation
-  public override void ApplyPowerup(MonoBehaviour i)
+  public override void ApplyPowerup(GameObject i)
   {
     // TODO: do something with the object
     Debug.Log("Starman powerup");

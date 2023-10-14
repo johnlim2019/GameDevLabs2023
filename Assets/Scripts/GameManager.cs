@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
   public IntSimpleGameEvent GameOverEvent;
   public IntSimpleGameEvent ScoreUpdateEvent;
   public IntSimpleGameEvent GameStartEvent;
+  public SimpleGameEvent ScoreIncrementEvent;
   private EnumBGM currentTrack;
   public enum EnumBGM
   {

@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 6402867395449174494}
   - component: {fileID: 7155779794462614565}
   - component: {fileID: 4615140936897642545}
+  - component: {fileID: 5038941456901557607}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -571,6 +572,7 @@ MonoBehaviour:
   GameOverEvent: {fileID: 11400000, guid: ad2bae05fe139459b95d15b9a7f80c43, type: 2}
   ScoreUpdateEvent: {fileID: 11400000, guid: 6e8d56d1b79814704a1f8c7a10fb120e, type: 2}
   GameStartEvent: {fileID: 11400000, guid: 232a8e7929712425e82179eb871bfec1, type: 2}
+  ScoreIncrementEvent: {fileID: 0}
   score: {fileID: 11400000, guid: d3d7b00d243dd4780b688431ca374cdc, type: 2}
   topScore: {fileID: 11400000, guid: 7dd2299452e3249e49e18464eb66bcee, type: 2}
   alive: 1
@@ -642,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e79bab313624a03ba0819f822ddaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: e8b185433b45040b18380f6e46e64ec9, type: 2}
+  Event: {fileID: 11400000, guid: aaec39933651f4d2ea4afbb7617a0088, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -671,6 +673,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: c02fa50778be4423fa222ee5397e462f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7694088233416088859}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ScoreIncrement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5038941456901557607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7408549296233077809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e79bab313624a03ba0819f822ddaed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: d8c14f8819e8b41aaa070e7a07b60705, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:

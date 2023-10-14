@@ -12,10 +12,12 @@ public class BouncyLootBox : BasePowerupBoxController
 
   void OnCollisionEnter2D(Collision2D col)
   {
+
     // when collide from bottom trigger animation.
-    float playerY = (float)(col.collider.transform.position.y - col.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2);
-    float otherY = (float)(this.transform.position.y + this.GetComponent<SpriteRenderer>().bounds.size.y / 2);
-    if (col.gameObject.CompareTag("Player") && playerY < otherY && !soundComplete)
+    // float playerY = (float)(col.collider.transform.position.y - col.collider.GetComponent<SpriteRenderer>().bounds.size.y / 2);
+    // float otherY = (float)(this.transform.position.y + this.GetComponent<SpriteRenderer>().bounds.size.y / 2);
+    // if (col.gameObject.CompareTag("Player") && playerY < otherY && !soundComplete)
+    if (col.otherCollider == base.edgeColliderBottom && col.gameObject.CompareTag("Player") && !soundComplete)
     {
       // activate box and score 
       Activate();
@@ -55,7 +57,7 @@ public class BouncyLootBox : BasePowerupBoxController
     // play sound 
     PowerUpSound();
     // score
-    gameManager.ScoreIncrement();
+    base.ScoreIncrementEvent.Raise(null);
   }
 
 

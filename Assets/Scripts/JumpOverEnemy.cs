@@ -10,39 +10,25 @@ public class JumpOverGoomba : MonoBehaviour
   public Vector3 boxSize = new Vector3();
   public float maxDistance;
   public LayerMask groundMask;
-  public SimpleGameEvent gameOverEvent;
   public SimpleGameEvent playerStompEvent;
   public SimpleGameEvent scoreIncrementEvent;
 
-  void Start()
-  {
-    // gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-  }
-
-
-
-  // void OnCollisionEnter2D(Collision2D col)
-  // {
-  //   if (col.gameObject.CompareTag("Ground"))
-  //   {
-  //     onGroundState = true;
-  //   }
-  // }
 
   void OnTriggerEnter2D(Collider2D other)
   {
     if (other.gameObject.CompareTag("Enemies"))
     {
       if
-        (other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2 > this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.01)
+        (other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2 > this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.035)
       {
-        // Debug.Log((other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2) + " " + (this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.01));
-        gameOverEvent.Raise(null);
+        // Debug.Log((other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2) + " " + (this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.035));
+        // Debug.Log("take damage");
+        GetComponent<MarioStateController>().SetPowerup(PowerupType.Damage);
       }
       else
       {
-        // Debug.Log("SQUAHS");
-        // Debug.Log((other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2) + " " + (this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.01));
+        // Debug.Log("STOMP");
+        // Debug.Log((other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2) + " " + (this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.035));
         playerStompEvent.Raise(null);
         scoreIncrementEvent.Raise(null);
         other.gameObject.GetComponent<EnemyMovement>().Die();
@@ -50,20 +36,6 @@ public class JumpOverGoomba : MonoBehaviour
     }
 
   }
-
-  // private bool OnGroundCheck()
-  // {
-  //   if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, groundMask))
-  //   {
-  //     // Debug.Log("on ground");
-  //     return true;
-  //   }
-  //   else
-  //   {
-  //     // Debug.Log("not on ground");
-  //     return false;
-  //   }
-  // }
 
   // helper
   void OnDrawGizmos()

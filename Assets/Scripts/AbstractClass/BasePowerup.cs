@@ -41,7 +41,7 @@ public abstract class BasePowerup : MonoBehaviour, IPowerup
 
   public void DestroyPowerup()
   {
-    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Spawn"))
+    if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Hidden"))
     {
       animator.SetTrigger("spawned");
     }

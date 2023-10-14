@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2441862503438683555, guid: 6b852b1dc0ea044ce97959ca7b7005ea, type: 3}
       propertyPath: m_Mass
-      value: 0.29206148
+      value: 0.28664997
       objectReference: {fileID: 0}
     - target: {fileID: 2816593789578547042, guid: 6b852b1dc0ea044ce97959ca7b7005ea, type: 3}
       propertyPath: m_LocalPosition.y
@@ -403,7 +403,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1364485531184925227, guid: 310bfb2d0060f48fab1a47bcd475d7c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.617
+      value: 0.816
       objectReference: {fileID: 0}
     - target: {fileID: 1364485531184925227, guid: 310bfb2d0060f48fab1a47bcd475d7c3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -444,18 +444,6 @@ PrefabInstance:
     - target: {fileID: 1380412522521427410, guid: 310bfb2d0060f48fab1a47bcd475d7c3, type: 3}
       propertyPath: m_Name
       value: bouncy powerup fireflower
-      objectReference: {fileID: 0}
-    - target: {fileID: 4364236772147154674, guid: 310bfb2d0060f48fab1a47bcd475d7c3, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4364236772147154674, guid: 310bfb2d0060f48fab1a47bcd475d7c3, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625948341197221934, guid: 310bfb2d0060f48fab1a47bcd475d7c3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -708,10 +696,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2708150497539653898, guid: 9423f4d14723649f78193469910e8e45, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: deea15aa0b23a4e77acd5d0843349f7e, type: 2}
     - target: {fileID: 3906061969697544829, guid: 9423f4d14723649f78193469910e8e45, type: 3}
       propertyPath: SmallMarioState
       value: 
@@ -760,6 +744,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8631549607509830686, guid: 9423f4d14723649f78193469910e8e45, type: 3}
+      propertyPath: m_Size.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631549607509830686, guid: 9423f4d14723649f78193469910e8e45, type: 3}
+      propertyPath: m_Size.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631549607509830686, guid: 9423f4d14723649f78193469910e8e45, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631549607509830686, guid: 9423f4d14723649f78193469910e8e45, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -795,7 +795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2753862688582175282, guid: 37bed708f78fd4422817a538ba7731eb, type: 3}
       propertyPath: m_Mass
-      value: 0.31865466
+      value: 0.3031875
       objectReference: {fileID: 0}
     - target: {fileID: 6302242114601509647, guid: 37bed708f78fd4422817a538ba7731eb, type: 3}
       propertyPath: mario
@@ -2240,7 +2240,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4092588991025115687}
-  - {fileID: 3040594227151602200}
   - {fileID: 334702812}
   m_Father: {fileID: 1236385679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2803,6 +2802,10 @@ PrefabInstance:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 106345987}
+    - target: {fileID: 7500587791923671428, guid: e0fc81aa66df34f1db8902ec4a19c65f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -78
+      objectReference: {fileID: 0}
     - target: {fileID: 8137205296508892771, guid: e0fc81aa66df34f1db8902ec4a19c65f, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2910,7 +2913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1480539142341357446, guid: 9ada2feac9efc43aba58026200e5784d, type: 3}
       propertyPath: m_Mass
-      value: 0.29539508
+      value: 0.3087
       objectReference: {fileID: 0}
     - target: {fileID: 1650782360434715406, guid: 9ada2feac9efc43aba58026200e5784d, type: 3}
       propertyPath: mario
@@ -3012,11 +3015,6 @@ SpringJoint2D:
   m_CorrespondingSourceObject: {fileID: 766584285578786219, guid: 9ada2feac9efc43aba58026200e5784d, type: 3}
   m_PrefabInstance: {fileID: 1835130184081760713}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3040594227151602200 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-  m_PrefabInstance: {fileID: 5584541274577182819}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3504565890763081817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4049728462409172467, guid: e3ed496bd87f44a5caa0b20b8c040b8a, type: 3}
@@ -3098,75 +3096,6 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 2543218506952239069, guid: 9ada2feac9efc43aba58026200e5784d, type: 3}
   m_PrefabInstance: {fileID: 1835130184081760713}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5584541274577182819
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1834286097}
-    m_Modifications:
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.07999992
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364485531184925227, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1380412522521427410, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: m_Name
-      value: bouncy powerup star box
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558012834230825145, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: mario
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558012834230825145, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8558012834230825145, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: aa7c117970d3340c3b73a5df52d90772, type: 3}
 --- !u!1001 &5701032938796268243
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -57,6 +57,7 @@ public class StarManPowerup : BasePowerup
   // interface implementation
   public override void ApplyPowerup(GameObject i)
   {
+    GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
     // TODO: do something with the object
     Debug.Log("Starman powerup");
   }

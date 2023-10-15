@@ -26,6 +26,7 @@ public class FireAttackAction : Action
         // compute direction vector
         Vector2 direction = CalculateDirection(degree, marioFaceRight.Value);
         // Apply a rightward impulse force to the object
+        Debug.Log(direction);
         rb.AddForce(direction * impulseForce, ForceMode2D.Impulse);
       }
 

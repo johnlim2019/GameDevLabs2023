@@ -62,7 +62,7 @@ public class MagicMushroomPowerup : BasePowerup
     if (result)
     {
       marioController.SetPowerup(this.powerupType);
-      Debug.Log("Magic mushroom powerup");
+      // Debug.Log("Magic mushroom powerup");
     }
   }
 }

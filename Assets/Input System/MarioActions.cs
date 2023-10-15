@@ -71,6 +71,15 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ZAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""79ac5c8a-3971-48fb-a254-c4f788792c35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -183,6 +192,17 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
                     ""action"": ""point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8736a57f-84dd-4cd0-82dc-f3319f97391d"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard+mouse"",
+                    ""action"": ""ZAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -213,6 +233,7 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
         m_gameplay_jumphold = m_gameplay.FindAction("jumphold", throwIfNotFound: true);
         m_gameplay_click = m_gameplay.FindAction("click", throwIfNotFound: true);
         m_gameplay_point = m_gameplay.FindAction("point", throwIfNotFound: true);
+        m_gameplay_ZAction = m_gameplay.FindAction("ZAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -279,6 +300,7 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_gameplay_jumphold;
     private readonly InputAction m_gameplay_click;
     private readonly InputAction m_gameplay_point;
+    private readonly InputAction m_gameplay_ZAction;
     public struct GameplayActions
     {
         private @MarioActions m_Wrapper;
@@ -288,6 +310,7 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
         public InputAction @jumphold => m_Wrapper.m_gameplay_jumphold;
         public InputAction @click => m_Wrapper.m_gameplay_click;
         public InputAction @point => m_Wrapper.m_gameplay_point;
+        public InputAction @ZAction => m_Wrapper.m_gameplay_ZAction;
         public InputActionMap Get() { return m_Wrapper.m_gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -312,6 +335,9 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
             @point.started += instance.OnPoint;
             @point.performed += instance.OnPoint;
             @point.canceled += instance.OnPoint;
+            @ZAction.started += instance.OnZAction;
+            @ZAction.performed += instance.OnZAction;
+            @ZAction.canceled += instance.OnZAction;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -331,6 +357,9 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
             @point.started -= instance.OnPoint;
             @point.performed -= instance.OnPoint;
             @point.canceled -= instance.OnPoint;
+            @ZAction.started -= instance.OnZAction;
+            @ZAction.performed -= instance.OnZAction;
+            @ZAction.canceled -= instance.OnZAction;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -364,5 +393,6 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
         void OnJumphold(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
+        void OnZAction(InputAction.CallbackContext context);
     }
 }

@@ -20,7 +20,7 @@ public class FireFlowerPowerup : BasePowerup
 
   void OnCollisionEnter2D(Collision2D col)
   {
-    Debug.Log(col.gameObject.tag);
+    // Debug.Log(col.gameObject.tag);
     if (col.gameObject.CompareTag("Player"))
     {
       ApplyPowerup(col.gameObject);
@@ -40,7 +40,7 @@ public class FireFlowerPowerup : BasePowerup
   public override void ApplyPowerup(GameObject i)
   {
     // TODO: do something with the object
-    Debug.Log("fireflower powerup");
+    // Debug.Log("fireflower powerup");
     GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
     bool result = i.TryGetComponent<MarioStateController>(out MarioStateController marioController);
     if (result)

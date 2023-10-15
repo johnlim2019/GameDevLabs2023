@@ -185,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
     if (value == -1 && faceRightState)
     {
       updateMarioShouldFaceRight(false);
-      marioSprite.flipX = true;
+      marioSprite.flipX = !faceRightState;
       if (marioBody.velocity.x > 0.10f)
         marioAnimator.SetTrigger("onSkid");
     }
@@ -193,7 +193,7 @@ public class PlayerMovement : MonoBehaviour
     if (value == 1 && !faceRightState)
     {
       updateMarioShouldFaceRight(true);
-      marioSprite.flipX = false;
+      marioSprite.flipX = !faceRightState;
       if (marioBody.velocity.x < -0.01f)
         marioAnimator.SetTrigger("onSkid");
     }

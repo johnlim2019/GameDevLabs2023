@@ -17,3 +17,5 @@ MonoBehaviour:
     powerupCollected: 1
   - fromState: 0
     powerupCollected: 4
+  - fromState: 0
+    powerupCollected: 3

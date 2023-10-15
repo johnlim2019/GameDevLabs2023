@@ -12,14 +12,15 @@ public class JumpOverGoomba : MonoBehaviour
   public LayerMask groundMask;
   public SimpleGameEvent playerStompEvent;
   public SimpleGameEvent scoreIncrementEvent;
-
+  public GameConstants gameConstants;
 
   void OnTriggerEnter2D(Collider2D other)
   {
     if (other.gameObject.CompareTag("Enemies"))
     {
       if
-        (other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2 > this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.035)
+        (other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2 > this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.035
+        && gameConstants.StarManState == MarioState.Default)
       {
         // Debug.Log((other.transform.position.y + other.GetComponent<SpriteRenderer>().bounds.size.y / 2) + " " + (this.transform.position.y - this.GetComponent<SpriteRenderer>().bounds.size.y / 3 + 0.035));
         // Debug.Log("take damage");

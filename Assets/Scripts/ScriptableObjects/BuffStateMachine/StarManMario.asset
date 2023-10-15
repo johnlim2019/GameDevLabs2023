@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271a97587a17241789c18d9d61dcc7d7, type: 3}
+  m_Name: StarManMario
+  m_EditorClassIdentifier: 
+  setupActions:
+  - {fileID: 11400000, guid: d6728b74d60fc4c3f8f0ba536b9ec408, type: 2}
+  actions: []
+  eventTriggeredActions: []
+  exitActions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: d7521da00e61d4816b3ba88e4d24cda8, type: 2}
+    trueState: {fileID: 11400000, guid: d13f9d3d791be4d7ca9fd927e919c367, type: 2}
+    falseState: {fileID: 11400000, guid: 92c32970aef94494698b74b149166d84, type: 2}
+  sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

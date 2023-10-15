@@ -54,6 +54,7 @@ public class MarioStateController : StateController
   }
   public void Fire()
   {
+    // Debug.Log("fire");
     this.currentState.DoEventTriggeredActions(this, ActionType.Attack);
   }
 

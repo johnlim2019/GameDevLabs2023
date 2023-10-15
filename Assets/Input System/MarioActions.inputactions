@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ZAction",
+                    "type": "Button",
+                    "id": "79ac5c8a-3971-48fb-a254-c4f788792c35",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -159,6 +168,17 @@
                     "processors": "",
                     "groups": "Keyboard+mouse",
                     "action": "point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8736a57f-84dd-4cd0-82dc-f3319f97391d",
+                    "path": "<Keyboard>/z",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Keyboard+mouse",
+                    "action": "ZAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

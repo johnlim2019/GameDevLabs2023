@@ -8,6 +8,8 @@ public class FireballController : MonoBehaviour
   // Start is called before the first frame update
   [SerializeField] private float scaleSpeed = 1.0f;
 
+  public SimpleGameEvent scoreIncrement;
+
   void Start()
   {
     StartCoroutine(ScaleAndDestroyCoroutine());
@@ -32,14 +34,15 @@ public class FireballController : MonoBehaviour
     Destroy(gameObject);
   }
 
-  void OnCollisionEnter2D(Collision2D collision)
+  void OnTriggerEnter2D(Collider2D other)
   {
-    // Debug.Log(collision.gameObject.name);
-    if (collision.gameObject.CompareTag("Enemies"))
+    if (other.gameObject.CompareTag("Enemies"))
     {
       Debug.Log("hit enemy");
       // destroy self
       Destroy(gameObject);
+      other.gameObject.GetComponent<EnemyMovement>().Die();
+      scoreIncrement.Raise(null);
     }
   }
 }

@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
   private float viewportHalfWidth;
   public Vector3 CameraStartPoint;
 
+  private Vector3 UnderGroundPoint = new Vector3(4.07f, -10f, -10f);
+
   void Start()
   {
     // get coordinate of the bottomleft of the viewport
@@ -40,6 +42,6 @@ public class CameraController : MonoBehaviour
 
   public void World2Pipe()
   {
-    this.transform.position = CameraStartPoint;
+    this.transform.position = UnderGroundPoint;
   }
 }

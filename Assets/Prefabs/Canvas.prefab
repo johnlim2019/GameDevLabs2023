@@ -191,21 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76699d117a05446699303927dfae4c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRestart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: aaec39933651f4d2ea4afbb7617a0088, type: 2}
-        m_TargetAssemblyTypeName: GameEvent`1[[UnityEngine.Object, UnityEngine
-        m_MethodName: Raise
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  gameRestart: {fileID: 0}
 --- !u!1 &1019022007581961311
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,21 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76699d117a05446699303927dfae4c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameRestart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: aaec39933651f4d2ea4afbb7617a0088, type: 2}
-        m_TargetAssemblyTypeName: GameEvent`1[[UnityEngine.Object, UnityEngine
-        m_MethodName: Raise
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  gameRestart: {fileID: 11400000, guid: aaec39933651f4d2ea4afbb7617a0088, type: 2}
 --- !u!1 &4660279915411268572
 GameObject:
   m_ObjectHideFlags: 0

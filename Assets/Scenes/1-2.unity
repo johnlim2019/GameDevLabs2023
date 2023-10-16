@@ -2614,7 +2614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7381326698083371412}
   endLimit: {fileID: 1503992176}
-  CameraStartPoint: {x: 4.07, y: -10, z: -10}
+  CameraStartPoint: {x: 4.07, y: 2.5, z: -10}
 --- !u!114 &1941472323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3271,6 +3271,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3982862250856122597, guid: 9423f4d14723649f78193469910e8e45, type: 3}
+      propertyPath: marioStartPosition.x
+      value: 4.032335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982862250856122597, guid: 9423f4d14723649f78193469910e8e45, type: 3}
+      propertyPath: marioStartPosition.y
+      value: -1.06
+      objectReference: {fileID: 0}
     - target: {fileID: 6718973426025129900, guid: 9423f4d14723649f78193469910e8e45, type: 3}
       propertyPath: m_Name
       value: Mario

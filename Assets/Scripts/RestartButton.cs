@@ -7,11 +7,12 @@ public class RestartButton : MonoBehaviour, IInteractiveButton
 {
   // GameManager gameManager;
 
-  public UnityEvent gameRestart;
+  // public UnityEvent gameRestart;
+  public SimpleGameEvent gameRestart;
 
   public void ButtonClick()
   {
-    gameRestart.Invoke();
+    gameRestart.Raise(null);
   }
 
   void Awake()
